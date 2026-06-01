@@ -36,7 +36,7 @@
         }
 
         .logo-img {
-            height: 60px; /* Haben'ny sary eo amin'ny navbar */
+            height: 60px;
             width: auto;
             object-fit: contain;
             background-color: white;
@@ -61,12 +61,12 @@
         /* Hero Section miaraka amin'ny sary lehibe ao aoriana */
         .hero {
             position: relative;
-            background: linear-gradient(rgba(26, 37, 60, 0.85), rgba(26, 37, 60, 0.85)), url('logooo.png');
+            background: linear-gradient(rgba(26, 37, 60, 0.88), rgba(26, 37, 60, 0.88)), url('logooo.png');
             background-size: cover;
             background-position: center;
             color: white;
             text-align: center;
-            padding: 80px 20px;
+            padding: 80px 20px 110px 20px; /* Nampitomboina kely ny espacement ambany */
             box-shadow: inset 0 -5px 15px rgba(0,0,0,0.2);
         }
 
@@ -76,7 +76,7 @@
             height: 120px;
             background-color: white;
             border-radius: 50%;
-            margin: 0 auto 20px auto;
+            margin: 0 auto;
             padding: 10px;
             display: flex;
             align-items: center;
@@ -93,6 +93,7 @@
 
         .hero h2 {
             font-size: 36px;
+            margin-top: 20px; /* Nampiana elanelana mba tsy hifanitsaka amin'ilay boribory */
             margin-bottom: 15px;
             color: #d4af37;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
@@ -111,9 +112,9 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 40px;
-            padding: 50px;
+            padding: 0 50px;
             max-width: 1200px;
-            margin: -30px auto 0 auto; /* Mitaingina kely an'ilay hero */
+            margin: -50px auto 0 auto; /* Mitaingina tsara eo ambonin'ilay manga */
             position: relative;
             z-index: 10;
         }
@@ -237,7 +238,7 @@
 </head>
 <body>
 
-    <!-- Nav-Bar miaraka amin'ny logo vaovao -->
+    <!-- Nav-Bar miaraka amin'ny logo -->
     <header>
         <div class="logo-container">
             <img src="logooo.png" alt="Logo Agence Andry" class="logo-img">
@@ -249,7 +250,7 @@
         <div><strong>Fianarantsoa</strong></div>
     </header>
 
-    <!-- Fizarana lehibe misy sary ao aoriana sy sary afovoany -->
+    <!-- Fizarana lehibe misy sary ao aoriana -->
     <div class="hero">
         <div class="hero-logo-center">
             <img src="logooo.png" alt="Logo Andry">
@@ -266,7 +267,7 @@
             <h3>Ho an'ny Mpampiasa (Client)</h3>
             <ul>
                 <li><strong>Frais d'agence 100%:</strong> Aloa mivantana amin'ny andro voalohany hanombohan'ny mpanampy miasa[cite: 2].</li>
-                <li><strong>Antoka 1 Volana:</strong> Hanolo mpiasa maimaim-poana ny agence raha miala latsaky ny 1 volana izy (raha tsy avy amin'ny mpampiasa ny olana)[cite: 1].</li>
+                <li><strong>Antoka 1 Volana:</strong> Hanolo mpiasa maimaim-poana ny agence raha miala latsaky ny 1 volana izy (raha miala ny mpiasa fa tsy avy amin'ny mpampiasa)[cite: 1].</li>
                 <li><strong>Fanadihadiana Lalina:</strong> Mitaky ny mombamomba rehetra ny agence toy ny CIN, Certificat de résidence, ary saritapaka[cite: 1].</li>
                 <li><strong>Fiarovana ny Fananana:</strong> Manome ny atotaratasy rehetra momba ny mpiasa raha sendra misy halatra mba hahafahan'ny mpampiasa mitory[cite: 1].</li>
             </ul>
@@ -297,7 +298,7 @@
         <div class="section-box candidat-box">
             <h3>Ho an'ny Mpiasa (Candidat)</h3>
             <ul>
-                <li><strong>Antoka Fitondran-tena:</strong> Tsy raisina aloha ny antsasaky ny karama amin'ny volana voalohany fa averina mitambatra amin'ny fahataperan'ny fifanarahana hiasana[cite: 2].</li>
+                <li><strong>Antoka Fitondran-tena:</strong> Tsy raisina aloha ny karama amin'ny volana voalohany fa averina mitambatra amin'ny fahataperan'ny fe-potoana hiasana[cite: 2].</li>
                 <li><strong>Fe-potoana Iasana:</strong> 6 volana ho an'ny eto Fianarantsoa, ary 1 taona kosa raha ho any amin'ny faritra[cite: 2].</li>
                 <li><strong>Famerenana Fandaniana:</strong> Raha miala tsy nahatapitra fifanarahana noho ny olana avy aminao, dia tsy maintsy mamerina ny fandaniana rehetra (Frais d'agence + fanafarana)[cite: 2].</li>
                 <li><strong>Fiarovana ny Mpiasa:</strong> Ny Agence dia miaro ny zon'ny olona avy aminy raha misy herisetra atao aminy any am-piasana[cite: 2].</li>
