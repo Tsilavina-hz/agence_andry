@@ -18,11 +18,11 @@
             color: #1a253c;
         }
 
-        /* NAVBAR RESPONSIVE */
+        /* NAVBAR SY HAINGO */
         header {
             background-color: #1a253c;
             color: white;
-            padding: 15px 50px;
+            padding: 10px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -31,6 +31,14 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        /* Rehefa mampiasa scroll dia mihena kely ny haavon'ny navbar */
+        header.scrolled {
+            padding: 5px 50px;
+            background-color: rgba(26, 37, 60, 0.95);
+            backdrop-filter: blur(5px);
         }
 
         .logo-container {
@@ -46,6 +54,11 @@
             background-color: white;
             padding: 2px;
             border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        header.scrolled .logo-img {
+            height: 50px;
         }
 
         .logo-text h1 {
@@ -65,7 +78,7 @@
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 20px;
+            gap: 15px;
             align-items: center;
         }
 
@@ -74,12 +87,14 @@
             text-decoration: none;
             font-size: 15px;
             font-weight: 600;
-            transition: 0.3s;
-            padding: 8px 12px;
+            padding: 8px 15px;
             border-radius: 5px;
+            transition: all 0.3s ease;
         }
 
-        .nav-menu li a:hover {
+        /* Loko rehefa tondroina na rehefa mavitrika (Active) amin'ny JS */
+        .nav-menu li a:hover,
+        .nav-menu li a.active {
             color: #1a253c;
             background-color: #d4af37;
         }
@@ -93,7 +108,26 @@
             font-weight: bold;
         }
 
-        /* HERO SECTION RESPONSIVE */
+        /* BOKOTRA HAMBURGER (Afihina aloha raha amin'ny Solosaina) */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background-color: white;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* HERO SECTION */
         .hero {
             position: relative;
             background: linear-gradient(rgba(26, 37, 60, 0.88), rgba(26, 37, 60, 0.88)), url('logooo.png');
@@ -101,7 +135,7 @@
             background-position: center;
             color: white;
             text-align: center;
-            padding: 60px 20px 100px 20px;
+            padding: 80px 20px 110px 20px;
             box-shadow: inset 0 -5px 15px rgba(0,0,0,0.2);
         }
 
@@ -131,7 +165,6 @@
             margin-bottom: 15px;
             color: #d4af37;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            padding: 0 10px;
         }
 
         .hero p {
@@ -140,28 +173,29 @@
             margin: 0 auto;
             color: #e2e8f0;
             line-height: 1.6;
-            padding: 0 10px;
         }
 
-        /* CONTAINER SY BOX RESPONSIVE */
+        /* CONTAINER SY BOX */
         .main-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
-            padding: 0 20px; /* Nahena mba tsy hivoaka amin'ny finday */
+            padding: 0 20px;
             max-width: 1200px;
             margin: -40px auto 0 auto;
             position: relative;
             z-index: 10;
         }
 
+        /* Nampiana scroll-margin-top mba tsy ho sakanan'ny navbar ny lohateny rehefa tsindrina ny menu */
         .section-box {
             background: white;
-            padding: 25px; /* Nahena kely ny padding anatiny */
+            padding: 25px;
             border-radius: 15px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             border-top: 6px solid #1a253c;
             transition: transform 0.3s ease;
+            scroll-margin-top: 100px; 
         }
 
         .section-box:hover {
@@ -270,48 +304,75 @@
             border-top: 1px solid #e2e8f0;
         }
 
-        /* ====================================================
-           MEDIA QUERIES (HO AN'NY FINDAY SY TABLETTE)
-           ==================================================== */
+        /* RESPONSIVE MEDIA QUERIES */
         @media (max-width: 768px) {
             header {
-                flex-direction: column; /* Lasa mitsangana ny logo sy ny menu */
-                padding: 15px 20px;
-                gap: 15px;
-                text-align: center;
+                padding: 15px 25px;
             }
 
+            header.scrolled {
+                padding: 10px 25px;
+            }
+
+            /* Mipoitra ny bokotra Hamburger */
+            .menu-toggle {
+                display: flex;
+            }
+
+            /* Haingo rehefa misokatra ilay Hamburger (mifanditry ho X) */
+            .menu-toggle.open span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            .menu-toggle.open span:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.open span:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -7px);
+            }
+
+            /* Afenina any ivelany aloha ilay Menu amin'ny finday */
             .nav-menu {
+                position: absolute;
+                top: 84px;
+                right: -100%;
+                background-color: #1a253c;
+                width: 70%;
+                height: calc(100vh - 84px);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 40px 30px;
+                gap: 25px;
+                transition: 0.4s ease;
+                box-shadow: -5px 5px 15px rgba(0,0,0,0.2);
+                border-left: 3px solid #d4af37;
+            }
+
+            header.scrolled .nav-menu {
+                top: 74px;
+                height: calc(100vh - 74px);
+            }
+
+            /* Rehefa ampiana class .active amin'ny JS vao mipoitra */
+            .nav-menu.open {
+                right: 0;
+            }
+
+            .nav-menu li {
                 width: 100%;
-                justify-content: center;
-                flex-wrap: wrap; /* Tsy mivoaka ny sisiny raha tery ny finday */
-                gap: 10px;
             }
 
             .nav-menu li a {
-                font-size: 14px;
-                padding: 6px 10px;
-            }
-
-            .hero h2 {
-                font-size: 26px; /* Nahena ny haben'ny lohateny amin'ny finday */
-            }
-
-            .hero p {
-                font-size: 14px;
-            }
-
-            .main-container {
-                margin-top: -20px; /* Nahena ny fifandimbiasana */
-                padding: 0 15px;
+                display: block;
+                width: 100%;
+                font-size: 16px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Nav-Bar Responsive -->
-    <header>
+    <!-- Nav-Bar Responsive miaraka amin'ny Hamburger -->
+    <header id="navbar">
         <div class="logo-container">
             <img src="logooo.png" alt="Logo Agence Andry" class="logo-img">
             <div class="logo-text">
@@ -320,16 +381,24 @@
             </div>
         </div>
         
-        <ul class="nav-menu">
-            <li><a href="#">Acceuil</a></li>
-            <li><a href="#mpampiasa">Hitady Mpanampy</a></li>
-            <li><a href="#mpiasa">Hitady Asa</a></li>
+        <!-- Bokotra Hamburger ho an'ny finday -->
+        <button class="menu-toggle" id="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <!-- Lahatry ny Menu -->
+        <ul class="nav-menu" id="nav-links">
+            <li><a href="#" class="nav-item active">Acceuil</a></li>
+            <li><a href="#mpampiasa" class="nav-item">Hitady Mpanampy</a></li>
+            <li><a href="#mpiasa" class="nav-item">Hitady Asa</a></li>
             <li class="loc-badge">Fianarantsoa</li>
         </ul>
     </header>
 
-    <!-- Fizarana lehibe -->
-    <div class="hero">
+    <!-- Fizarana lehibe (Hero) -->
+    <div class="hero" id="home">
         <div class="hero-logo-center">
             <img src="logooo.png" alt="Logo Andry">
         </div>
@@ -409,5 +478,64 @@
         <p>&copy; 2026 Andry Fianarantsoa - Home & Service. Zo rehetra voatokana.</p>
     </footer>
 
+    <!-- ====================================================
+         RAFITRA JAVASCRIPT VAOVAO
+         ==================================================== -->
+    <script>
+        const navbar = document.getElementById('navbar');
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const navLinks = document.getElementById('nav-links');
+        const navItems = document.querySelectorAll('.nav-item');
+        const sections = document.querySelectorAll('.section-box');
+
+        // 1. Fitantanana ny Hamburger Menu (Open/Close)
+        menuBtn.addEventListener('click', () => {
+            menuBtn.classList.toggle('open');
+            navLinks.classList.toggle('open');
+        });
+
+        // Rehefa tsindrina ny iray amin'ny menu dia hidy ho azy ilay izy (amin'ny finday)
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                menuBtn.classList.remove('open');
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // 2. Haingo rehefa scrolling (Mihena ny haavon'ny Navbar)
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // 3. Active Link on Scroll (Manaraka ho azy ny lokon'ny menu)
+            let currentSection = "";
+            
+            // Raha mbola eny ambony dia Acceuil foana no active
+            if (window.scrollY < 300) {
+                currentSection = "home";
+            } else {
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    // Raha efa dila ny antsasaky ny fizarana ny scroll
+                    if (window.scrollY >= sectionTop - 150) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+            }
+
+            // Manova ny class .active eo amin'ny menu mifanaraka aminy
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (currentSection === "home" && item.getAttribute('href') === "#") {
+                    item.classList.add('active');
+                } else if (item.getAttribute('href') === `#${currentSection}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
