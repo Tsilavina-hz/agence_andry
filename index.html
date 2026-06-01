@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Andry Fianarantsoa Home & Service</title>
+    <title>Andry Fianarantsoa - Home & Service</title>
     <style>
-        /* CSS Fototra */
         * {
             margin: 0;
             padding: 0;
@@ -14,236 +13,235 @@
         }
 
         body {
-            display: flex;
-            background-color: #f4f6f9;
+            background-color: #f8fafc;
             color: #1a253c;
-            min-height: 100vh;
         }
 
-        /* 1. Sisiny Havia (Sidebar) */
-        .sidebar {
-            width: 260px;
-            background-color: #1a253c; /* Manga Antitra avy amin'ny logo */
-            color: #ffffff;
-            padding: 20px;
+        /* Nav-Bar */
+        header {
+            background-color: #1a253c;
+            color: white;
+            padding: 20px 50px;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid #d4af37;
         }
 
-        .logo-section {
-            text-align: center;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #2c3d5a;
-            margin-bottom: 20px;
-        }
-
-        .logo-section h2 {
-            font-size: 20px;
-            color: #d4af37; /* Loko Volamena / Mavo */
+        .logo h1 {
+            font-size: 24px;
+            color: #d4af37;
             letter-spacing: 1px;
         }
 
-        .logo-section p {
+        .logo p {
             font-size: 11px;
             color: #a0aec0;
             text-transform: uppercase;
         }
 
-        .menu-list {
-            list-style: none;
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 37, 60, 0.9), rgba(26, 37, 60, 0.9)), url('logooo.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
         }
 
-        .menu-item a {
-            display: block;
-            padding: 12px 15px;
+        .hero h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #d4af37;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
             color: #e2e8f0;
-            text-decoration: none;
+        }
+
+        /* Fizarana roa (Mpanjifa vs Mpiasa) */
+        .main-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            padding: 40px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 5px solid #1a253c;
+        }
+
+        .section-box.candidat-box {
+            border-top-color: #d4af37;
+        }
+
+        .section-box h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #1a253c;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 10px;
+        }
+
+        .section-box ul {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .section-box ul li {
+            margin-bottom: 10px;
+            font-size: 14px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .section-box ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2ecc71;
+            font-weight: bold;
+        }
+
+        /* Formulaire */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #4a5568;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e1;
             border-radius: 6px;
-            margin-bottom: 8px;
-            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background-color: #1a253c;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
             transition: 0.3s;
         }
 
-        .menu-item a:hover, .menu-item.active a {
+        .btn-submit:hover {
             background-color: #d4af37;
             color: #1a253c;
         }
 
-        /* 2. Fizarana Lehibe (Main Content) */
-        .main-content {
-            flex: 1;
-            padding: 30px;
-        }
-
-        .header-main {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .header-main h1 {
-            font-size: 26px;
+        .candidat-box .btn-submit {
+            background-color: #d4af37;
             color: #1a253c;
         }
 
-        .date-badge {
-            background-color: #ffffff;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: bold;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            border: 1px solid #e2e8f0;
+        .candidat-box .btn-submit:hover {
+            background-color: #1a253c;
+            color: white;
         }
-
-        /* 3. Ireo Karatra Tarehimarika (Cards) */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .card {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border-left: 5px solid #1a253c;
-        }
-
-        .card.gold { border-left-color: #d4af37; }
-        .card.green { border-left-color: #2ecc71; }
-        .card.red { border-left-color: #e74c3c; }
-
-        .card-title {
-            font-size: 14px;
-            color: #718096;
-            text-transform: uppercase;
-            margin-bottom: 5px;
-        }
-
-        .card-value {
-            font-size: 28px;
-            font-weight: bold;
-            color: #1a253c;
-        }
-
-        /* 4. Fizarana Alerte sy Fampitandremana */
-        .alerts-section {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        .alerts-section h3 {
-            font-size: 18px;
-            margin-bottom: 15px;
-            color: #1a253c;
-            border-bottom: 2px solid #f4f6f9;
-            padding-bottom: 10px;
-        }
-
-        .alert-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px;
-            border-radius: 6px;
-            margin-bottom: 10px;
-            font-size: 14px;
-        }
-
-        .alert-item.warning {
-            background-color: #fff9e6;
-            border: 1px solid #ffe899;
-            color: #8a6d3b;
-        }
-
-        .alert-item.danger {
-            background-color: #fdedec;
-            border: 1px solid #fadbd8;
-            color: #78281f;
-        }
-
-        .status-badge {
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        .badge-warning { background-color: #f39c12; color: white; }
-        .badge-danger { background-color: #e74c3c; color: white; }
     </style>
 </head>
 <body>
 
-    <!-- 1. Sisiny Havia: Menu -->
-    <div class="sidebar">
-        <div class="logo-section">
-            <h2>ANDRY</h2>
+    <header>
+        <div class="logo">
+            <h1>ANDRY</h1>
             <p>Home & Service</p>
         </div>
-        <ul class="menu-list">
-            <li class="menu-item active"><a href="#">Dashboard</a></li>
-            <li class="menu-item"><a href="#">Mpiasa (Candidats)</a></li>
-            <li class="menu-item"><a href="#">Mpampiasa (Clients)</a></li>
-            <li class="menu-item"><a href="#">Fifanarahana (Contrats)</a></li>
-            <li class="menu-item"><a href="#">Olana & Fialana</a></li>
-        </ul>
+        <div><strong>Fianarantsoa</strong></div>
+    </header>
+
+    <div class="hero">
+        <h2>Matihanina amin'ny Fitantanana Mpanampy</h2>
+        <p>Andry Fianarantsoa dia mifanerasera aminao amin'ny fitadiavana olona azo itokisana sy tsara fitondran-tena.</p>
     </div>
 
-    <!-- 2. Fizarana Havanana: Votoatiny lehibe -->
-    <div class="main-content">
-        <div class="header-main">
-            <h1>Tableau de Bord</h1>
-            <div class="date-badge">01 Jona 2026</div>
-        </div>
-
-        <!-- Ireo Karatra fampisehoana tarehimarika -->
-        <div class="cards-grid">
-            <div class="card">
-                <div class="card-title">Mpiasa Disponible</div>
-                <div class="card-value">24</div>
-            </div>
-            <div class="card gold">
-                <div class="card-title">Contrats Actifs</div>
-                <div class="card-value">12</div>
-            </div>
-            <div class="card green">
-                <div class="card-title">Mpampiasa (Clients)</div>
-                <div class="card-value">38</div>
-            </div>
-            <div class="card red">
-                <div class="card-title">Olana (Litiges)</div>
-                <div class="card-value">2</div>
-            </div>
-        </div>
-
-        <!-- Fampitandremana ho an'ny Agence -->
-        <div class="alerts-section">
-            <h3>Fampitandremana sy Lamina Ilaingana</h3>
+    <div class="main-container">
+        
+        <!-- 1. Fizarana ho an'ny Mpampiasa (Client) -->
+        <div class="section-box">
+            <h3>Ho an'ny Mpampiasa (Client)</h3>
+            <ul>
+                <li><strong>Frais d'agence 100%:</strong> Aloa amin'ny andro voalohany hiasan'ny mpanampy.</li>
+                <li><strong>Antoka 1 Volana:</strong> Soloina maimaim-poana raha miala latsaky ny iray volana ilay mpiasa.</li>
+                <li><strong>Fiarovana sy Lamina:</strong> Ny agence no manao fanadihadiana ny mombamomba azy rehetra (CIN, Residence).</li>
+            </ul>
             
-            <!-- Alerte momba ny karama miantona (6 volana) -->
-            <div class="alert-item warning">
-                <div>
-                    <strong>Garantie Karama:</strong> Tapitra androany ny fifanarahana 6 volana an'i <em>Rasoa (Ménagère)</em>. Tokony haverina aminy miaraka ilay karama volana voalohany.
+            <form>
+                <div class="form-group">
+                    <label>Anarana sy Fanampiny</label>
+                    <input type="text" placeholder="Ohatra: M. Rakoto" required>
                 </div>
-                <span class="status-badge badge-warning">Retenu</span>
-            </div>
-
-            <!-- Alerte momba ny olana (Halatra na fialana tampoka) -->
-            <div class="alert-item danger">
-                <div>
-                    <strong>Rupture de Contrat:</strong> Niala tsy nahatapitra 1 volana i <em>Rakoto (Gardien)</em> tao amin'ny Client <em>M. Andry</em>. Mila soloina maimaim-poana alohan'ny herinandro.
+                <div class="form-group">
+                    <label>Laharana Finday</label>
+                    <input type="tel" placeholder="Ohatra: 034 00 000 00" required>
                 </div>
-                <span class="status-badge badge-danger">Latsaky ny 1 Volana</span>
-            </div>
+                <div class="form-group">
+                    <label>Asa Tadiavina</label>
+                    <select>
+                        <option>Ménagère (Mpanampy an-trano)</option>
+                        <option>Gardien (Mpiambina)</option>
+                        <option>Serveur / Serveuse</option>
+                        <option>Nounou (Mpitaiza kely)</option>
+                    </select>
+                </div>
+                <button type="button" class="btn-submit">Handefa Fangatahana</button>
+            </form>
         </div>
+
+        <!-- 2. Fizarana ho an'ny Mpiasa (Candidat) -->
+        <div class="section-box candidat-box">
+            <h3>Ho an'ny Mpiasa (Candidat)</h3>
+            <ul>
+                <li><strong>Karama Voalohany:</strong> Tazonina ho antoka amin'ny volana voalohany ary averina mitambatra amin'ny faran'ny contrat.</li>
+                <li><strong>Fe-potoana:</strong> 6 volana (raha Fianarantsoa) na 1 taona (raha any amin'ny faritra).</li>
+                <li><strong>Fitondran-tena:</strong> Tsy azo atao ny miala amin'ny asa tsy misy préavis 15 andro mialoha.</li>
+            </ul>
+            
+            <form>
+                <div class="form-group">
+                    <label>Anarana sy Fanampiny</label>
+                    <input type="text" placeholder="Ohatra: Rasoa" required>
+                </div>
+                <div class="form-group">
+                    <label>Laharana CIN</label>
+                    <input type="text" placeholder="Laharana karapanondro" required>
+                </div>
+                <div class="form-group">
+                    <label>Ny Asa Hainao</label>
+                    <select>
+                        <option>Ménagère</option>
+                        <option>Gardien</option>
+                        <option>Serveur / Serveuse</option>
+                    </select>
+                </div>
+                <button type="button" class="btn-submit">Hisoratra Anarana</button>
+            </form>
+        </div>
+
     </div>
 
 </body>
