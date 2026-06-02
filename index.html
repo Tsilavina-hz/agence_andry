@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Andry Fianarantsoa - Home & Service</title>
+    <!-- Nampiana FontAwesome mba hahazoana sary famantarana (Icons) tsara tarehy -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -16,7 +18,7 @@
         html, body {
             width: 100%;
             max-width: 100%;
-            overflow-x: hidden; /* Misakana tanteraka ny scroll mitsivalana */
+            overflow-x: hidden;
             background-color: #f4f6f9;
             color: #1a253c;
         }
@@ -80,16 +82,16 @@
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 15px;
+            gap: 10px;
             align-items: center;
         }
 
         .nav-menu li a {
             color: #e2e8f0;
             text-decoration: none;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
-            padding: 8px 15px;
+            padding: 8px 12px;
             border-radius: 5px;
             transition: all 0.3s ease;
         }
@@ -176,14 +178,100 @@
             line-height: 1.6;
         }
 
-        /* CONTAINER SY BOX */
+        /* ====================================================
+           FIZARANA NY SERIVISY (NEW SERVICES SECTION)
+           ==================================================== */
+        .services-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            text-align: center;
+            scroll-margin-top: 100px;
+        }
+
+        .services-section h2 {
+            font-size: 28px;
+            color: #1a253c;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .services-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: #d4af37;
+            border-radius: 2px;
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-bottom: 4px solid #1a253c;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-bottom-color: #d4af37;
+        }
+
+        .service-icon {
+            font-size: 40px;
+            color: #d4af37;
+            margin-bottom: 15px;
+            background-color: #f4f6f9;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            color: #1a253c;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* CONTAINER SY BOX HO AN'NY FORMULAIRE */
+        .section-title-forms {
+            text-align: center;
+            font-size: 26px;
+            color: #1a253c;
+            margin: 60px 0 20px 0;
+            scroll-margin-top: 100px;
+        }
+
         .main-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
             padding: 0 20px;
             max-width: 1200px;
-            margin: -40px auto 0 auto;
+            margin: 0 auto;
             position: relative;
             z-index: 10;
         }
@@ -321,7 +409,6 @@
                 display: flex;
             }
 
-            /* Hamburger animation */
             .menu-toggle.open span:nth-child(1) {
                 transform: rotate(45deg) translate(5px, 5px);
             }
@@ -332,7 +419,6 @@
                 transform: rotate(-45deg) translate(6px, -7px);
             }
 
-            /* Rehefa nakatona ilay menu: afenina tanteraka ka tsy mitsotra any ivelany */
             .nav-menu {
                 display: none; 
                 position: absolute;
@@ -348,7 +434,6 @@
                 box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             }
 
-            /* Rehefa misokatra (open): amin'izay vao mampiasa display flex */
             .nav-menu.open {
                 display: flex;
             }
@@ -378,8 +463,8 @@
                 font-size: 14px;
             }
 
-            .main-container {
-                margin-top: -20px;
+            .services-section h2 {
+                font-size: 24px;
             }
         }
     </style>
@@ -404,6 +489,7 @@
         
         <ul class="nav-menu" id="nav-links">
             <li><a href="#" class="nav-item active">Acceuil</a></li>
+            <li><a href="#serivisy" class="nav-item">Ny Serivisy</a></li>
             <li><a href="#mpampiasa" class="nav-item">Hitady Mpanampy</a></li>
             <li><a href="#mpiasa" class="nav-item">Hitady Asa</a></li>
             <li class="loc-badge">Fianarantsoa</li>
@@ -419,7 +505,41 @@
         <p>Andry Fianarantsoa dia mifanerasera aminao amin'ny fitadiavana olona azo itokisana, tsara fitondran-tena, ary efa nandalo fanadihadiana lalina.</p>
     </div>
 
-    <!-- Votoatiny -->
+    <!-- ====================================================
+         FIZARANA NY SERIVISY (NEW)
+         ==================================================== -->
+    <section class="services-section" id="serivisy">
+        <h2>Ny Serivisy Ataonay</h2>
+        <p style="color: #64748b; margin-top: 10px; font-size: 15px;">Manolotra vahaolana feno sy matihanina ho an'ny tokantrano sy ny fandraharahana eto Fianarantsoa.</p>
+        
+        <div class="services-container">
+            <!-- Serivisy 1: Real Estate -->
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-house-chimney"></i></div>
+                <h3>Andry Real Estate</h3>
+                <p>Mitady trano hofaina na hovidiana ve ianao? Sa manana tany sy trano tiana hamidy? Izahay no mikarakara sy mitantana izany am-pitoniana.</p>
+            </div>
+
+            <!-- Serivisy 2: Recruitment -->
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-users-gear"></i></div>
+                <h3>Andry Recruitment</h3>
+                <p>Fikarohana mpiasa efa nandalo sivana sy fanadihadiana lalina: Mpanampy an-trano, Mpitaiza kely (Nounou), Mpiambina (Gardien), ary mpiasan'ny Hotely.</p>
+            </div>
+
+            <!-- Serivisy 3: Communication -->
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-palette"></i></div>
+                <h3>Communication & Design</h3>
+                <p>Manandratra ny fandraharahanao izahay: Famoronana Logo, Afisy (Affiches), Karatra matihanina (Cartes de visite), ary dokam-barotra amin'ny Facebook.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lohatenin'ny Formulaires -->
+    <h2 class="section-title-forms" id="fisoratana">Fisoratana Anarana & Fangatahana</h2>
+
+    <!-- Votoatiny (Formulaires) -->
     <div class="main-container">
         
         <!-- 1. Mpampiasa -->
@@ -496,7 +616,9 @@
         const menuBtn = document.getElementById('mobile-menu-btn');
         const navLinks = document.getElementById('nav-links');
         const navItems = document.querySelectorAll('.nav-item');
-        const sections = document.querySelectorAll('.section-box');
+        
+        // Alaina miaraka na ny fizarana serivisy na ny boaty formulaire ho an'ny scroll
+        const sections = document.querySelectorAll('.services-section, .section-box');
 
         // Toggle menu
         menuBtn.addEventListener('click', () => {
@@ -520,12 +642,12 @@
             }
 
             let currentSection = "";
-            if (window.scrollY < 300) {
+            if (window.scrollY < 200) {
                 currentSection = "home";
             } else {
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
-                    if (window.scrollY >= sectionTop - 150) {
+                    if (window.scrollY >= sectionTop - 160) {
                         currentSection = section.getAttribute('id');
                     }
                 });
