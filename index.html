@@ -25,18 +25,21 @@
             min-height: 100vh;
         }
 
-        /* NAVBAR GLOBAL */
+        /* NAVBAR FIXED GLOBAL */
         header {
             background-color: #1a253c;
             color: white;
-            padding: 10px 50px;
+            padding: 12px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 4px solid #d4af37;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            position: sticky;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            /* Natao raikitra (Fixed) eto ambony */
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
             z-index: 1000;
         }
 
@@ -121,30 +124,69 @@
             transition: 0.3s;
         }
 
-        /* HERO SECTION (RAKOTRA FOANA HO AN'NY ACCUEIL) */
+        /* MAIN CONTENT MANAGER (Misy margin-top noho ilay Navbar fixed) */
+        .page-section {
+            display: none;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 78px auto 0 auto; /* 78px mba tsy ho takon'ny navbar ilay vontoatiny */
+            width: 100%;
+            animation: slideUp 0.4s ease forwards;
+        }
+
+        .page-section.active-page {
+            display: block;
+        }
+
+        /* Fanafoanana ny padding/margin manokana ho an'ny Accueil mba ho fenon-pejy tsara (Hero style) */
+        #home-page {
+            max-width: 100%;
+            width: 100%;
+            margin-top: 78px;
+            padding: 0;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ACCUEIL DESIGN NOHAVAOZINA (HERO SECTION MODERN) */
         .hero {
             position: relative;
-            background: linear-gradient(rgba(26, 37, 60, 0.88), rgba(26, 37, 60, 0.88)), url('logooo.png');
+            background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(26, 37, 60, 0.85)), url('logooo.png');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             color: white;
             text-align: center;
-            padding: 80px 20px 110px 20px;
-            box-shadow: inset 0 -5px 15px rgba(0,0,0,0.2);
+            padding: 100px 20px;
+            min-height: calc(100vh - 78px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .hero-logo-center {
-            width: 110px;
-            height: 110px;
+            width: 130px;
+            height: 130px;
             background-color: white;
             border-radius: 50%;
-            margin: 0 auto;
-            padding: 10px;
+            padding: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            border: 3px solid #d4af37;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            border: 4px solid #d4af37;
+            margin-bottom: 25px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
         }
 
         .hero-logo-center img {
@@ -154,39 +196,73 @@
         }
 
         .hero h2 {
-            font-size: 32px;
-            margin-top: 20px;
+            font-size: 38px;
+            font-weight: 800;
             margin-bottom: 15px;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            max-width: 800px;
+            line-height: 1.3;
+        }
+        
+        .hero h2 span {
             color: #d4af37;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .hero p {
+            font-size: 18px;
+            max-width: 650px;
+            margin-bottom: 40px;
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        /* BOKOTRA MIFANDRAIKITRA EO AMIN'NY ACCUEIL */
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .hero-btn {
+            padding: 15px 30px;
             font-size: 16px;
-            max-width: 700px;
-            margin: 0 auto;
-            color: #e2e8f0;
-            line-height: 1.6;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        /* MAIN CONTENT MANAGER (HANAFIANA NY PEJY TSY ILAINA) */
-        .page-section {
-            display: none; /* Afenina daholo amin'ny voalohany */
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
-            animation: slideUp 0.4s ease forwards;
+        .hero-btn-primary {
+            background-color: #d4af37;
+            color: #1a253c;
+            border: 2px solid #d4af37;
         }
 
-        /* Ity kilasy ity no mampiseho ilay pejy voafidy */
-        .page-section.active-page {
-            display: block;
+        .hero-btn-primary:hover {
+            background-color: transparent;
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
         }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .hero-btn-secondary {
+            background-color: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+
+        .hero-btn-secondary:hover {
+            background-color: #ffffff;
+            color: #1a253c;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
         }
 
         /* SERVICES SECTION STYLE */
@@ -410,7 +486,7 @@
 
         /* MEDIA QUERIES */
         @media (max-width: 768px) {
-            header { padding: 15px 20px; position: relative; }
+            header { padding: 15px 20px; }
             .menu-toggle { display: flex; }
             .menu-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
             .menu-toggle.open span:nth-child(2) { opacity: 0; }
@@ -434,15 +510,18 @@
             .nav-menu li { width: 100%; text-align: center; }
             .nav-menu li a { display: inline-block; width: 80%; font-size: 16px; padding: 10px; }
 
-            .hero h2 { font-size: 24px; }
+            .hero h2 { font-size: 28px; }
+            .hero p { font-size: 15px; }
             .services-section h2 { font-size: 24px; }
             .form-row { flex-direction: column; gap: 0; }
+            .hero-buttons { flex-direction: column; width: 100%; max-width: 300px; }
+            .hero-btn { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Nav-Bar -->
+    <!-- Nav-Bar FIXED -->
     <header id="navbar">
         <div class="logo-container">
             <img src="logooo.png" alt="Logo Agence Andry" class="logo-img">
@@ -459,7 +538,6 @@
         </button>
         
         <ul class="nav-menu" id="nav-links">
-            <!-- Nampiana onclick fotsiny hantsoina ny JavaScript mifindra pejy -->
             <li><a onclick="showPage('home-page')" id="link-home" class="nav-item active">Accueil</a></li>
             <li><a onclick="showPage('serivisy-page')" id="link-serivisy" class="nav-item">Ny Serivisy</a></li>
             <li><a onclick="showPage('mpampiasa-page')" id="link-mpampiasa" class="nav-item">Hitady Mpanampy</a></li>
@@ -468,14 +546,24 @@
         </ul>
     </header>
 
-    <!-- 1. ACCUEIL PAGE (ITY NY MISEHO VOLALOHANY) -->
+    <!-- 1. ACCUEIL PAGE MODERNIZED -->
     <div id="home-page" class="page-section active-page">
         <div class="hero">
             <div class="hero-logo-center">
                 <img src="logooo.png" alt="Logo Andry">
             </div>
-            <h2>Matihanina amin'ny Fitantanana Mpanampy</h2>
+            <h2>Matihanina amin'ny <span>Fitantanana Mpanampy</span> sy Serivisy Tokantrano</h2>
             <p>Andry Fianarantsoa dia mifanerasera aminao amin'ny fitadiavana olona azo itokisana, tsara fitondran-tena, ary efa nandalo fanadihadiana lalina.</p>
+            
+            <!-- Bokotra roa lehibe (Call to Action) -->
+            <div class="hero-buttons">
+                <a onclick="showPage('mpampiasa-page')" class="hero-btn hero-btn-primary">
+                    <i class="fa-solid fa-magnifying-glass"></i> Hitady Mpanampy (Client)
+                </a>
+                <a onclick="showPage('mpiasa-page')" class="hero-btn hero-btn-secondary">
+                    <i class="fa-solid fa-briefcase"></i> Hisoratra Anarana (Mpiasa)
+                </a>
+            </div>
         </div>
     </div>
 
@@ -649,35 +737,29 @@
 
         // Fonksiona lehibe hifandirana pejy (Page Navigation Manager)
         function showPage(pageId) {
-            // 1. Hafenina daholo ny fizarana rehetra
             const sections = document.querySelectorAll('.page-section');
             sections.forEach(sec => {
                 sec.classList.remove('active-page');
             });
 
-            // 2. Asehoy ilay pejy voafidy fotsiny
             const selectedPage = document.getElementById(pageId);
             if(selectedPage) {
                 selectedPage.classList.add('active-page');
             }
 
-            // 3. Ovaina ny lohan'ny bokotra ho miloko mavo (Active)
             const navItems = document.querySelectorAll('.nav-item');
             navItems.forEach(item => {
                 item.classList.remove('active');
             });
 
-            // Ampifandraisina amin'ny ID ny bokotra mifanaraka aminy
             if(pageId === 'home-page') document.getElementById('link-home').classList.add('active');
             if(pageId === 'serivisy-page') document.getElementById('link-serivisy').classList.add('active');
             if(pageId === 'mpampiasa-page') document.getElementById('link-mpampiasa').classList.add('active');
             if(pageId === 'mpiasa-page') document.getElementById('link-mpiasa').classList.add('active');
 
-            // 4. Akatona ny menu raha amin'ny finday
             menuBtn.classList.remove('open');
             navLinks.classList.remove('open');
 
-            // 5. Averina any ambony indrindra ny fijery (scroll to top)
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
