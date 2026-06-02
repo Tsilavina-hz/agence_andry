@@ -16,9 +16,10 @@
         body {
             background-color: #f4f6f9;
             color: #1a253c;
+            overflow-x: hidden; /* Misakana ny pejy tsy hihozongozona mitsivalana */
         }
 
-        /* NAVBAR SY HAINGO */
+        /* NAVBAR SY HAINGO GLOBAL */
         header {
             background-color: #1a253c;
             color: white;
@@ -34,7 +35,6 @@
             transition: all 0.3s ease;
         }
 
-        /* Rehefa mampiasa scroll dia mihena kely ny haavon'ny navbar */
         header.scrolled {
             padding: 5px 50px;
             background-color: rgba(26, 37, 60, 0.95);
@@ -92,7 +92,6 @@
             transition: all 0.3s ease;
         }
 
-        /* Loko rehefa tondroina na rehefa mavitrika (Active) amin'ny JS */
         .nav-menu li a:hover,
         .nav-menu li a.active {
             color: #1a253c;
@@ -108,7 +107,7 @@
             font-weight: bold;
         }
 
-        /* BOKOTRA HAMBURGER (Afihina aloha raha amin'ny Solosaina) */
+        /* BOKOTRA HAMBURGER */
         .menu-toggle {
             display: none;
             flex-direction: column;
@@ -187,7 +186,6 @@
             z-index: 10;
         }
 
-        /* Nampiana scroll-margin-top mba tsy ho sakanan'ny navbar ny lohateny rehefa tsindrina ny menu */
         .section-box {
             background: white;
             padding: 25px;
@@ -304,22 +302,24 @@
             border-top: 1px solid #e2e8f0;
         }
 
-        /* RESPONSIVE MEDIA QUERIES */
+        /* ====================================================
+           MEDIA QUERIES (HO AN'NY FINDAY SY TABLETTE) - VOAHITSY
+           ==================================================== */
         @media (max-width: 768px) {
             header {
-                padding: 15px 25px;
+                padding: 15px 20px;
+                position: relative; /* Mametra ny menu ao anatiny */
             }
 
             header.scrolled {
-                padding: 10px 25px;
+                padding: 10px 20px;
             }
 
-            /* Mipoitra ny bokotra Hamburger */
             .menu-toggle {
                 display: flex;
             }
 
-            /* Haingo rehefa misokatra ilay Hamburger (mifanditry ho X) */
+            /* Fihetsiky ny Hamburger ho lasa X */
             .menu-toggle.open span:nth-child(1) {
                 transform: rotate(45deg) translate(5px, 5px);
             }
@@ -330,48 +330,66 @@
                 transform: rotate(-45deg) translate(6px, -7px);
             }
 
-            /* Afenina any ivelany aloha ilay Menu amin'ny finday */
+            /* Menu ho an'ny finday: midina avy eo ambany fa tsy mivoaka sisiny */
             .nav-menu {
                 position: absolute;
-                top: 84px;
-                right: -100%;
+                top: 100%;
+                left: 0;
+                width: 100%;
                 background-color: #1a253c;
-                width: 70%;
-                height: calc(100vh - 84px);
                 flex-direction: column;
-                align-items: flex-start;
-                padding: 40px 30px;
-                gap: 25px;
-                transition: 0.4s ease;
-                box-shadow: -5px 5px 15px rgba(0,0,0,0.2);
-                border-left: 3px solid #d4af37;
+                align-items: center;
+                padding: 20px 0;
+                gap: 15px;
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+                transition: all 0.3s ease-in-out;
+                border-bottom: 3px solid #d4af37;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             }
 
-            header.scrolled .nav-menu {
-                top: 74px;
-                height: calc(100vh - 74px);
-            }
-
-            /* Rehefa ampiana class .active amin'ny JS vao mipoitra */
+            /* Rehefa tsindrina ilay hamburger vao mipoitra */
             .nav-menu.open {
-                right: 0;
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
             }
 
             .nav-menu li {
                 width: 100%;
+                text-align: center;
             }
 
             .nav-menu li a {
-                display: block;
-                width: 100%;
+                display: inline-block;
+                width: 80%;
                 font-size: 16px;
+                padding: 10px;
+            }
+
+            .loc-badge {
+                display: inline-block;
+                margin-top: 5px;
+            }
+
+            .hero h2 {
+                font-size: 26px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .main-container {
+                margin-top: -20px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Nav-Bar Responsive miaraka amin'ny Hamburger -->
+    <!-- Nav-Bar Responsive -->
     <header id="navbar">
         <div class="logo-container">
             <img src="logooo.png" alt="Logo Agence Andry" class="logo-img">
@@ -381,14 +399,14 @@
             </div>
         </div>
         
-        <!-- Bokotra Hamburger ho an'ny finday -->
+        <!-- Bokotra Hamburger -->
         <button class="menu-toggle" id="mobile-menu-btn">
             <span></span>
             <span></span>
             <span></span>
         </button>
         
-        <!-- Lahatry ny Menu -->
+        <!-- Lisitry ny Menu -->
         <ul class="nav-menu" id="nav-links">
             <li><a href="#" class="nav-item active">Acceuil</a></li>
             <li><a href="#mpampiasa" class="nav-item">Hitady Mpanampy</a></li>
@@ -397,7 +415,7 @@
         </ul>
     </header>
 
-    <!-- Fizarana lehibe (Hero) -->
+    <!-- Hero Section -->
     <div class="hero" id="home">
         <div class="hero-logo-center">
             <img src="logooo.png" alt="Logo Andry">
@@ -478,9 +496,7 @@
         <p>&copy; 2026 Andry Fianarantsoa - Home & Service. Zo rehetra voatokana.</p>
     </footer>
 
-    <!-- ====================================================
-         RAFITRA JAVASCRIPT VAOVAO
-         ==================================================== -->
+    <!-- JAVASCRIPT RAFI-PITANTANANA -->
     <script>
         const navbar = document.getElementById('navbar');
         const menuBtn = document.getElementById('mobile-menu-btn');
@@ -488,13 +504,13 @@
         const navItems = document.querySelectorAll('.nav-item');
         const sections = document.querySelectorAll('.section-box');
 
-        // 1. Fitantanana ny Hamburger Menu (Open/Close)
+        // 1. Hanokatra sy hanakatona ny menu responsive (Hamburger)
         menuBtn.addEventListener('click', () => {
             menuBtn.classList.toggle('open');
             navLinks.classList.toggle('open');
         });
 
-        // Rehefa tsindrina ny iray amin'ny menu dia hidy ho azy ilay izy (amin'ny finday)
+        // Hikatona ho azy rehefa tsindrina ny iray amin'ny menu
         navItems.forEach(item => {
             item.addEventListener('click', () => {
                 menuBtn.classList.remove('open');
@@ -502,31 +518,28 @@
             });
         });
 
-        // 2. Haingo rehefa scrolling (Mihena ny haavon'ny Navbar)
+        // 2. Scrolling effect sy Active link on scroll
         window.addEventListener('scroll', () => {
+            // Navbar miha-manify
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
 
-            // 3. Active Link on Scroll (Manaraka ho azy ny lokon'ny menu)
+            // Manova ny loko mavitrika (Active link)
             let currentSection = "";
-            
-            // Raha mbola eny ambony dia Acceuil foana no active
             if (window.scrollY < 300) {
                 currentSection = "home";
             } else {
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
-                    // Raha efa dila ny antsasaky ny fizarana ny scroll
                     if (window.scrollY >= sectionTop - 150) {
                         currentSection = section.getAttribute('id');
                     }
                 });
             }
 
-            // Manova ny class .active eo amin'ny menu mifanaraka aminy
             navItems.forEach(item => {
                 item.classList.remove('active');
                 if (currentSection === "home" && item.getAttribute('href') === "#") {
