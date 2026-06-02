@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Andry Fianarantsoa - Home & Service</title>
-    <!-- Nampiana FontAwesome mba hahazoana sary famantarana (Icons) tsara tarehy -->
+    <!-- FontAwesome ho an'ny Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -178,9 +178,7 @@
             line-height: 1.6;
         }
 
-        /* ====================================================
-           FIZARANA NY SERIVISY (NEW SERVICES SECTION)
-           ==================================================== */
+        /* SERVICES SECTION */
         .services-section {
             max-width: 1200px;
             margin: 40px auto;
@@ -256,18 +254,26 @@
             line-height: 1.6;
         }
 
-        /* CONTAINER SY BOX HO AN'NY FORMULAIRE */
+        /* SECTION TITLE FORMS */
         .section-title-forms {
             text-align: center;
             font-size: 26px;
             color: #1a253c;
-            margin: 60px 0 20px 0;
+            margin: 60px 0 10px 0;
             scroll-margin-top: 100px;
         }
+        
+        .section-subtitle-forms {
+            text-align: center;
+            color: #64748b;
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
 
+        /* MAIN CONTAINER (FORMULAIRES) */
         .main-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 30px;
             padding: 0 20px;
             max-width: 1200px;
@@ -278,16 +284,16 @@
 
         .section-box {
             background: white;
-            padding: 25px;
+            padding: 35px 30px;
             border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
             border-top: 6px solid #1a253c;
             transition: transform 0.3s ease;
             scroll-margin-top: 100px; 
         }
 
         .section-box:hover {
-            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
 
         .section-box.candidat-box {
@@ -295,24 +301,48 @@
         }
 
         .section-box h3 {
-            font-size: 22px;
+            font-size: 24px;
             margin-bottom: 20px;
             color: #1a253c;
             border-bottom: 2px solid #f1f5f9;
             padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-box h3 i {
+            color: #d4af37;
+        }
+        
+        .candidat-box h3 i {
+            color: #1a253c;
         }
 
         .section-box ul {
             list-style: none;
             margin-bottom: 30px;
+            background-color: #f8fafc;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #1a253c;
+        }
+        
+        .section-box.candidat-box ul {
+            border-left-color: #d4af37;
         }
 
         .section-box ul li {
-            margin-bottom: 12px;
-            font-size: 14px;
+            margin-bottom: 10px;
+            font-size: 13.5px;
             line-height: 1.5;
-            padding-left: 25px;
+            padding-left: 20px;
             position: relative;
+            color: #475569;
+        }
+
+        .section-box ul li:last-child {
+            margin-bottom: 0;
         }
 
         .section-box ul li::before {
@@ -321,10 +351,20 @@
             left: 0;
             color: #2ecc71;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 15px;
         }
 
-        /* FORMULAIRE */
+        /* LAYOUT DOUBLE FIELDS ( côte à côte ) */
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        /* FORMULAIRE STYLES */
         .form-group {
             margin-bottom: 20px;
         }
@@ -332,25 +372,43 @@
         .form-group label {
             display: block;
             font-size: 13px;
-            font-weight: bold;
+            font-weight: 600;
             margin-bottom: 8px;
-            color: #4a5568;
+            color: #334155;
         }
 
-        .form-group input, .form-group select {
+        .form-group input, .form-group select, .form-group textarea {
             width: 100%;
-            padding: 12px;
+            padding: 12px 14px;
             border: 1px solid #cbd5e1;
             border-radius: 8px;
             font-size: 14px;
             background-color: #f8fafc;
-            transition: 0.3s;
+            transition: all 0.3s ease;
+            color: #1a253c;
         }
 
-        .form-group input:focus, .form-group select:focus {
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
             border-color: #1a253c;
             outline: none;
             background-color: white;
+            box-shadow: 0 0 0 3px rgba(26, 37, 60, 0.1);
+        }
+
+        .candidat-box input:focus, .candidat-box select:focus, .candidat-box textarea:focus {
+            border-color: #d4af37;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+        }
+        
+        /* Dynamic hidden field textarea */
+        .extra-textarea-container {
+            display: none; /* Afenina aloha amin'ny voalohany */
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .btn-submit {
@@ -360,22 +418,27 @@
             color: white;
             border: none;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: bold;
             cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 4px 6px rgba(26, 37, 60, 0.2);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(26, 37, 60, 0.15);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
         }
 
         .btn-submit:hover {
             background-color: #d4af37;
             color: #1a253c;
+            transform: translateY(-2px);
         }
 
         .candidat-box .btn-submit {
             background-color: #d4af37;
             color: #1a253c;
-            box-shadow: 0 4px 6px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 4px 6px rgba(212, 175, 55, 0.15);
         }
 
         .candidat-box .btn-submit:hover {
@@ -386,38 +449,21 @@
         footer {
             text-align: center;
             padding: 30px;
-            margin-top: 40px;
+            margin-top: 60px;
             font-size: 14px;
             color: #718096;
             border-top: 1px solid #e2e8f0;
+            background-color: #ffffff;
         }
 
-        /* ====================================================
-           MEDIA QUERIES (HO AN'NY FINDAY SY TABLETTE)
-           ==================================================== */
+        /* MEDIA QUERIES */
         @media (max-width: 768px) {
-            header {
-                padding: 15px 20px;
-                position: relative;
-            }
-
-            header.scrolled {
-                padding: 10px 20px;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-
-            .menu-toggle.open span:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
-            }
-            .menu-toggle.open span:nth-child(2) {
-                opacity: 0;
-            }
-            .menu-toggle.open span:nth-child(3) {
-                transform: rotate(-45deg) translate(6px, -7px);
-            }
+            header { padding: 15px 20px; position: relative; }
+            header.scrolled { padding: 10px 20px; }
+            .menu-toggle { display: flex; }
+            .menu-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+            .menu-toggle.open span:nth-child(2) { opacity: 0; }
+            .menu-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(6px, -7px); }
 
             .nav-menu {
                 display: none; 
@@ -434,37 +480,22 @@
                 box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             }
 
-            .nav-menu.open {
-                display: flex;
-            }
+            .nav-menu.open { display: flex; }
+            .nav-menu li { width: 100%; text-align: center; }
+            .nav-menu li a { display: inline-block; width: 80%; font-size: 16px; padding: 10px; }
+            .loc-badge { display: inline-block; margin-top: 5px; }
 
-            .nav-menu li {
-                width: 100%;
-                text-align: center;
+            .hero h2 { font-size: 26px; }
+            .hero p { font-size: 14px; }
+            .services-section h2, .section-title-forms { font-size: 24px; }
+            
+            .main-container {
+                grid-template-columns: 1fr;
+                padding: 0 15px;
             }
-
-            .nav-menu li a {
-                display: inline-block;
-                width: 80%;
-                font-size: 16px;
-                padding: 10px;
-            }
-
-            .loc-badge {
-                display: inline-block;
-                margin-top: 5px;
-            }
-
-            .hero h2 {
-                font-size: 26px;
-            }
-
-            .hero p {
-                font-size: 14px;
-            }
-
-            .services-section h2 {
-                font-size: 24px;
+            .form-row {
+                flex-direction: column;
+                gap: 0;
             }
         }
     </style>
@@ -505,29 +536,24 @@
         <p>Andry Fianarantsoa dia mifanerasera aminao amin'ny fitadiavana olona azo itokisana, tsara fitondran-tena, ary efa nandalo fanadihadiana lalina.</p>
     </div>
 
-    <!-- ====================================================
-         FIZARANA NY SERIVISY (NEW)
-         ==================================================== -->
+    <!-- SERVICES SECTION -->
     <section class="services-section" id="serivisy">
         <h2>Ny Serivisy Ataonay</h2>
-        <p style="color: #64748b; margin-top: 10px; font-size: 15px;">Manolotra vahaolana feno sy matihanina ho an'ny tokantrano sy ny fandraharahanao.</p>
+        <p style="color: #64748b; margin-top: 10px; font-size: 15px;">Manolotra vahaolana feno sy matihanina ho an'ny tokantrano sy ny fandraharahana eto Fianarantsoa.</p>
         
         <div class="services-container">
-            <!-- Serivisy 1: Real Estate -->
             <div class="service-card">
                 <div class="service-icon"><i class="fa-solid fa-house-chimney"></i></div>
                 <h3>Andry Real Estate</h3>
                 <p>Mitady trano hofaina na hovidiana ve ianao? Sa manana tany sy trano tiana hamidy? Izahay no mikarakara sy mitantana izany am-pitoniana.</p>
             </div>
 
-            <!-- Serivisy 2: Recruitment -->
             <div class="service-card">
                 <div class="service-icon"><i class="fa-solid fa-users-gear"></i></div>
                 <h3>Andry Recruitment</h3>
                 <p>Fikarohana mpiasa efa nandalo sivana sy fanadihadiana lalina: Mpanampy an-trano, Mpitaiza kely (Nounou), Mpiambina (Gardien), ary mpiasan'ny Hotely.</p>
             </div>
 
-            <!-- Serivisy 3: Communication -->
             <div class="service-card">
                 <div class="service-icon"><i class="fa-solid fa-palette"></i></div>
                 <h3>Communication & Design</h3>
@@ -536,72 +562,129 @@
         </div>
     </section>
 
-    <!-- Lohatenin'ny Formulaires -->
-    <h2 class="section-title-forms" id="fisoratana">Fisoratana Anarana & Fangatahana</h2>
+    <!-- FORMULAIRES SECTION -->
+    <h2 class="section-title-forms" id="fisoratana">Formulaire sy Fifandraisana</h2>
+    <p class="section-subtitle-forms">Fenoy ny taratasy mifanaraka aminao eto ambany, hamaly anao haingana ny Agence.</p>
 
-    <!-- Votoatiny (Formulaires) -->
     <div class="main-container">
         
-        <!-- 1. Mpampiasa -->
+        <!-- 1. FORMULAIRE CLIENT (MPAMPIASA) -->
         <div class="section-box" id="mpampiasa">
-            <h3>Ho an'ny Mpampiasa (Client)</h3>
+            <h3><i class="fa-solid fa-briefcase"></i> Ho an'ny Client (Mpampiasa)</h3>
             <ul>
-                <li><strong>Frais d'agence 100%:</strong> Aloa mivantana amin'ny andro voalohany hanombohan'ny mpanampy miasa.</li>
-                <li><strong>Antoka 1 Volana:</strong> Hanolo mpiasa maimaim-poana ny agence raha miala latsaky ny 1 volana izy (raha tsy avy amin'ny mpampiasa ny olana).</li>
-                <li><strong>Fanadihadiana Lalina:</strong> Mitaky ny mombamomba rehetra ny agence toy ny CIN, Certificat de résidence, ary saritapaka.</li>
-                <li><strong>Fiarovana ny Fananana:</strong> Manome ny atotaratasy rehetra momba ny mpiasa raha sendra misy halatra mba hahafahan'ny mpampiasa mitory.</li>
+                <li>Miantoka mpiasa efa voasivana tsara sady manana antontan-taratasy feno (CIN, Résidence).</li>
+                <li>Afaka manolo mpiasa maimaim-poana ao anatin'ny iray volana raha misy ny olana.</li>
             </ul>
             
             <form>
                 <div class="form-group">
-                    <label>Anarana sy Fanampiny</label>
-                    <input type="text" placeholder="Ohatra: M. Jean" required>
+                    <label>Anarana sy Fanampiny (Nom & Prénom) *</label>
+                    <input type="text" placeholder="Ohatra: M. Jean Luc" required>
                 </div>
-                <div class="form-group">
-                    <label>Laharana Finday</label>
-                    <input type="tel" placeholder="Ohatra: 034 12 345 67" required>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Laharana Finday 1 *</label>
+                        <input type="tel" placeholder="Ohatra: 034 12 345 67" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Finday 2 (WhatsApp)</label>
+                        <input type="tel" placeholder="Ohatra: 032 45 678 90">
+                    </div>
                 </div>
+
                 <div class="form-group">
-                    <label>Karazan'asa ilaina</label>
-                    <select>
-                        <option>Ménagère (Mpanampy an-trano)</option>
-                        <option>Gardien (Mpiambina)</option>
-                        <option>Serveur / Serveuse</option>
-                        <option>Nounou (Mpitaiza kely)</option>
+                    <label>Toerana misy anao (Adresse/Quartier) *</label>
+                    <input type="text" placeholder="Ohatra: Tsianolondroa, Fianarantsoa" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Karazan'ny Serivisy ilainao *</label>
+                    <select id="client-service-select" onchange="toggleClientTextarea()">
+                        <option value="Menagere">Ménagère (Mpanampy an-trano)</option>
+                        <option value="Nounou">Nounou (Mpitaiza kely)</option>
+                        <option value="Gardien">Gardien (Mpiambina)</option>
+                        <option value="Serveur">Serveur / Serveuse</option>
+                        <option value="Immobilier">Andry Real Estate (Trano/Tany)</option>
+                        <option value="Design">Communication & Design</option>
+                        <option value="Autre">Autre... (Hafa tsy voatanisa)</option>
                     </select>
                 </div>
-                <button type="button" class="btn-submit">Handefa Fangatahana</button>
+
+                <!-- Boaty mipoitra raha mifidy "Autre" ny Client -->
+                <div class="form-group extra-textarea-container" id="client-extra-box">
+                    <label>Soraty eto antsipiriany ny zavatra tadiaviao *</label>
+                    <textarea rows="4" placeholder="Hamarito tsara eto ny serivisy na mpiasa manokana tadiaviao..."></textarea>
+                </div>
+
+                <button type="button" class="btn-submit">
+                    <i class="fa-regular fa-paper-plane"></i> Handefa Fangatahana
+                </button>
             </form>
         </div>
 
-        <!-- 2. Mpiasa -->
+        <!-- 2. FORMULAIRE CANDIDAT (MPIASA) -->
         <div class="section-box candidat-box" id="mpiasa">
-            <h3>Ho an'ny Mpiasa (Candidat)</h3>
+            <h3><i class="fa-solid fa-user-pen"></i> Ho an'ny Candidat (Mpitady Asa)</h3>
             <ul>
-                <li><strong>Antoka Fitondran-tena:</strong> Tsy raisina aloha ny karama amin'ny volana voalohany fa averina mitambatra amin'ny fahataperan'ny fe-potoana hiasana.</li>
-                <li><strong>Fe-potoana Iasana:</strong> 6 volana ho an'ny eto Fianarantsoa, ary 1 taona kosa raha ho any amin'ny faritra.</li>
-                <li><strong>Famerenana Fandaniana:</strong> Raha miala tsy nahatapitra fifanarahana noho ny olana avy aminao, dia tsy maintsy mamerina ny fandaniana rehetra (Frais d'agence + fanafarana).</li>
-                <li><strong>Fiarovana ny Mpiasa:</strong> Ny Agence dia miaro ny zon'ny olona avy aminy raha misy herisetra atao aminy any am-piasana.</li>
+                <li>Fiarovana ny mpiasa manoloana ny herisetra sy fanajana ny fifanarahana hiasana.</li>
+                <li>Fitakiana taratasy ara-dalàna: Karapanondro (CIN) vaovao sy dika mitovy aminy.</li>
             </ul>
             
             <form>
                 <div class="form-group">
-                    <label>Anarana sy Fanampiny</label>
-                    <input type="text" placeholder="Ohatra: Rabe" required>
+                    <label>Anarana sy Fanampiny (Nom & Prénom) *</label>
+                    <input type="text" placeholder="Ohatra: Rasoa Marie" required>
                 </div>
-                <div class="form-group">
-                    <label>Laharana CIN</label>
-                    <input type="text" placeholder="Laharana karapanondro (tarehimarika 12)" required>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Laharana CIN *</label>
+                        <input type="text" maxlength="12" placeholder="Tarehimarika 12" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Taona (Âge) *</label>
+                        <input type="number" min="18" max="60" placeholder="Ohatra: 25" required>
+                    </div>
                 </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Laharana Finday *</label>
+                        <input type="tel" placeholder="Ohatra: 033 44 555 66" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Daty afaka manomboka *</label>
+                        <input type="date" required>
+                    </div>
+                </div>
+
                 <div class="form-group">
-                    <label>Ny Asa Hainao</label>
-                    <select>
-                        <option>Ménagère</option>
-                        <option>Gardien</option>
-                        <option>Serveur / Serveuse</option>
+                    <label>Toerana misy anao ankehitriny *</label>
+                    <input type="text" placeholder="Ohatra: Tambohobe, Fianarantsoa" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Inona ny asa hainao na tadiaviao? *</label>
+                    <select id="candidat-service-select" onchange="toggleCandidatTextarea()">
+                        <option value="Menagere">Ménagère</option>
+                        <option value="Nounou">Nounou (Mpitaiza kely)</option>
+                        <option value="Gardien">Gardien (Mpiambina)</option>
+                        <option value="Chauffeur">Chauffeur (Mpamily)</option>
+                        <option value="Cuisine">Cuisinier(e) (Mpikarakara sakafo)</option>
+                        <option value="Autre">Autre... (Hafa hainao/Tadiavinao)</option>
                     </select>
                 </div>
-                <button type="button" class="btn-submit">Hisoratra Anarana</button>
+
+                <!-- Boaty mipoitra raha mifidy "Autre" ny Candidat -->
+                <div class="form-group extra-textarea-container" id="candidat-extra-box">
+                    <label>Soraty eto ny asa hafa hainao na ny traikefa anananao *</label>
+                    <textarea rows="4" placeholder="Soraty eto ny antsipiriany..."></textarea>
+                </div>
+
+                <button type="button" class="btn-submit">
+                    <i class="fa-solid fa-user-plus"></i> Hisoratra Anarana
+                </button>
             </form>
         </div>
 
@@ -616,11 +699,9 @@
         const menuBtn = document.getElementById('mobile-menu-btn');
         const navLinks = document.getElementById('nav-links');
         const navItems = document.querySelectorAll('.nav-item');
-        
-        // Alaina miaraka na ny fizarana serivisy na ny boaty formulaire ho an'ny scroll
         const sections = document.querySelectorAll('.services-section, .section-box');
 
-        // Toggle menu
+        // Toggle menu mobile
         menuBtn.addEventListener('click', () => {
             menuBtn.classList.toggle('open');
             navLinks.classList.toggle('open');
@@ -632,6 +713,28 @@
                 navLinks.classList.remove('open');
             });
         });
+
+        // Dynamic Textarea ho an'ny Client
+        function toggleClientTextarea() {
+            const select = document.getElementById('client-service-select');
+            const extraBox = document.getElementById('client-extra-box');
+            if (select.value === 'Autre') {
+                extraBox.style.display = 'block';
+            } else {
+                extraBox.style.display = 'none';
+            }
+        }
+
+        // Dynamic Textarea ho an'ny Candidat
+        function toggleCandidatTextarea() {
+            const select = document.getElementById('candidat-service-select');
+            const extraBox = document.getElementById('candidat-extra-box');
+            if (select.value === 'Autre') {
+                extraBox.style.display = 'block';
+            } else {
+                extraBox.style.display = 'none';
+            }
+        }
 
         // Scroll events
         window.addEventListener('scroll', () => {
