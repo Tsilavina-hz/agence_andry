@@ -733,7 +733,7 @@
                     <li><strong>Antoka fitondran-tena:</strong> Tsy raisina aloha ny antsasaky ny karama amin'ny volana voalohany fa averina mitambatra amin'ny fahataperan'ny fifanarahana hiasana[cite: 2].</li>
                     <li><strong>Raha miala tsy nahatapitra contrat:</strong> Tsy maintsy mamerina ny fandaniana rehetra nataon'ny mpampiasa (Frais d'agence + fanafarana) raha toa ka olana avy aminao[cite: 2].</li>
                     <li><strong>Fiarovana ny Mpiasa:</strong> Ny Agence dia miaro ny zon'ny olona avy aminy raha misy herisetra na fanararaotana atao aminy[cite: 2].</li>
-                    <li><strong>Raha misy halatra:</strong> Raha misy porofo dia afaka mitory any amin'ny mpitandro filaminana ny mpampiasa[cite: 2].</li>
+                    <li><strong>Raha misy halatra:</strong> Raha misy porofo dia afaka mitory any amin'ny mpitandro filaminana the mpampiasa[cite: 2].</li>
                 </ul>
 
                 <div id="candidat-status" class="form-status"></div>
@@ -784,7 +784,7 @@
                     </div>
 
                     <div class="form-group extra-textarea-container" id="candidat-extra-box">
-                        <label>Soraty eto ny asa hafa hainao na ny traikefa anananao *</label>
+                        <label id="candidat-extra-label">Soraty eto ny asa hafa hainao na ny traikefa anananao *</label>
                         <textarea id="candidat-details" rows="4" placeholder="Soraty eto ny antsipiriany..."></textarea>
                     </div>
 
@@ -867,69 +867,15 @@
         function toggleCandidatTextarea() {
             const select = document.getElementById('candidat-service-select');
             const extraBox = document.getElementById('candidat-extra-box');
-            extraBox.style.display = (select.value === 'Autre') ? 'block' : 'none';
+            const extraLabel = document.getElementById('candidat-extra-label');
+            
+            if (select.value === 'Autre') {
+                extraLabel.innerText = "Soraty eto ny asa hafa hainao na ny traikefa anananao *";
+                extraBox.style.display = 'block';
+            } else {
+                extraBox.style.display = 'none';
+            }
         }
-
-        // ==========================================
-        // SCRIPT HAMPANDEHA NY FORMULAIRES (LOGIC)
-        // ==========================================
-        
-        // 1. Handefasana ny Formulaire an'ny Client
-        document.getElementById('client-form').addEventListener('submit', function(e) {
-            e.preventDefault(); // Misoroka ny refresh-pejy
-            
-            const statusBox = document.getElementById('client-status');
-            const name = document.getElementById('client-name').value;
-            const service = document.getElementById('client-service-select').value;
-            
-            // Fanamarihana: Eto ianao dia afaka mampiasa Fetch API raha handefa amin'ny mailaka (ohatra Formspree)
-            // Ho an'ny fampisehoana eo no ho eo, mampiasa fampandrenesana fahombiazana isika:
-            
-            try {
-                statusBox.className = "form-status success";
-                statusBox.innerHTML = `<i class="fa-solid fa-circle-check"></i> Misaotra anao ${name}! Voaray ny fangatahanao momba ny serivisy <strong>${service}</strong>. Hifandray aminao tsy ho ela ny Agence Andry.`;
-                
-                // Fafana ny ao anaty formulaire rehefa lasa
-                document.getElementById('client-form').reset();
-                toggleClientTextarea();
-                
-                // Akorisa miakatra kely ho hita ilay hafatra
-                statusBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            } catch (error) {
-                statusBox.className = "form-status error";
-                statusBox.innerHTML = "Misy olana kely ny fampitana ny angon-drakitra. Andramo indray aoriana kely.";
-            }
-        });
-
-        // 2. Handefasana ny Formulaire an'ny Mpiasa (Candidat)
-        document.getElementById('candidat-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const statusBox = document.getElementById('candidat-status');
-            const name = document.getElementById('candidat-name').value;
-            const cin = document.getElementById('candidat-cin').value;
-            
-            // Fanamarinana tsotra ny halavan'ny CIN (12 digits)
-            if(cin.length < 12 || isNaN(cin)) {
-                statusBox.className = "form-status error";
-                statusBox.innerHTML = "<i class="fa-solid fa-triangle-exclamation"></i> Diso ny laharana CIN-nao. Tokony ho tarehimarika 12 mazava tsara izany.";
-                statusBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                return;
-            }
-            
-            try {
-                statusBox.className = "form-status success";
-                statusBox.innerHTML = `<i class="fa-solid fa-user-check"></i> Misaotra anao ${name}! Voasoratra soa aman-tsara ny anaranao. Ento ao amin'ny Agence Andry ny dika mitovy amin'ny karapanondroo (CIN) sy ny antontan-taratasy ilaina mba hamitana ny fifanarahana.`;
-                
-                document.getElementById('candidat-form').reset();
-                toggleCandidatTextarea();
-                
-                statusBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            } catch (error) {
-                statusBox.className = "form-status error";
-                statusBox.innerHTML = "Misy olana teo am-pandefasana. Jereo tsara ny fifandraisana internet.";
-            }
-        });
     </script>
 </body>
 </html>
