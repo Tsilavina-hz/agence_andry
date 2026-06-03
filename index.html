@@ -35,7 +35,6 @@
             align-items: center;
             border-bottom: 4px solid #d4af37;
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            /* Natao raikitra (Fixed) eto ambony */
             position: fixed;
             top: 0;
             left: 0;
@@ -124,12 +123,12 @@
             transition: 0.3s;
         }
 
-        /* MAIN CONTENT MANAGER (Misy margin-top noho ilay Navbar fixed) */
+        /* MAIN CONTENT MANAGER */
         .page-section {
             display: none;
             padding: 40px 20px;
             max-width: 1200px;
-            margin: 78px auto 0 auto; /* 78px mba tsy ho takon'ny navbar ilay vontoatiny */
+            margin: 78px auto 0 auto;
             width: 100%;
             animation: slideUp 0.4s ease forwards;
         }
@@ -138,7 +137,6 @@
             display: block;
         }
 
-        /* Fanafoanana ny padding/margin manokana ho an'ny Accueil mba ho fenon-pejy tsara (Hero style) */
         #home-page {
             max-width: 100%;
             width: 100%;
@@ -151,7 +149,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ACCUEIL DESIGN NOHAVAOZINA (HERO SECTION MODERN) */
+        /* HERO SECTION MODERN */
         .hero {
             position: relative;
             background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(26, 37, 60, 0.85)), url('logooo.png');
@@ -217,7 +215,6 @@
             line-height: 1.7;
         }
 
-        /* BOKOTRA MIFANDRAIKITRA EO AMIN'NY ACCUEIL */
         .hero-buttons {
             display: flex;
             gap: 20px;
@@ -546,7 +543,7 @@
         </ul>
     </header>
 
-    <!-- 1. ACCUEIL PAGE MODERNIZED -->
+    <!-- 1. ACCUEIL PAGE -->
     <div id="home-page" class="page-section active-page">
         <div class="hero">
             <div class="hero-logo-center">
@@ -555,7 +552,6 @@
             <h2>Matihanina amin'ny <span>Fitantanana Mpanampy</span> sy Serivisy Tokantrano</h2>
             <p>Andry Fianarantsoa dia mifanerasera aminao amin'ny fitadiavana olona azo itokisana, tsara fitondran-tena, ary efa nandalo fanadihadiana lalina.</p>
             
-            <!-- Bokotra roa lehibe (Call to Action) -->
             <div class="hero-buttons">
                 <a onclick="showPage('mpampiasa-page')" class="hero-btn hero-btn-primary">
                     <i class="fa-solid fa-magnifying-glass"></i> Hitady Mpanampy (Client)
@@ -641,8 +637,8 @@
                     </div>
 
                     <div class="form-group extra-textarea-container" id="client-extra-box">
-                        <label>Soraty eto antsipiriany ny zavatra tadiaviao *</label>
-                        <textarea rows="4" placeholder="Hamarito tsara eto ny serivisy na mpiasa manokana tadiaviao..."></textarea>
+                        <label id="client-extra-label">Soraty eto antsipiriany ny zavatra tadiaviao *</label>
+                        <textarea rows="4" placeholder="Hamarito tsara eto ny antsipiriany..."></textarea>
                     </div>
 
                     <button type="button" class="btn-submit">
@@ -735,7 +731,7 @@
             navLinks.classList.toggle('open');
         });
 
-        // Fonksiona lehibe hifandirana pejy (Page Navigation Manager)
+        // Page Navigation Manager
         function showPage(pageId) {
             const sections = document.querySelectorAll('.page-section');
             sections.forEach(sec => {
@@ -763,11 +759,24 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Dynamic Textarea ho an'ny Client
+        // Dynamic Textarea ho an'ny Client (Natao mifanaraka amin'ny Immobilier sy Design koa)
         function toggleClientTextarea() {
             const select = document.getElementById('client-service-select');
             const extraBox = document.getElementById('client-extra-box');
-            extraBox.style.display = (select.value === 'Autre') ? 'block' : 'none';
+            const extraLabel = document.getElementById('client-extra-label');
+            
+            if (select.value === 'Immobilier') {
+                extraLabel.innerText = "Hamarito eto ny trano/tany tadiaviao (Hofaina, hovidiana, toerana...) *";
+                extraBox.style.display = 'block';
+            } else if (select.value === 'Design') {
+                extraLabel.innerText = "Inona ny karazana design ilainao (Logo, Affiche, Facebook ad...) *";
+                extraBox.style.display = 'block';
+            } else if (select.value === 'Autre') {
+                extraLabel.innerText = "Soraty eto antsipiriany ny zavatra tadiaviao *";
+                extraBox.style.display = 'block';
+            } else {
+                extraBox.style.display = 'none';
+            }
         }
 
         // Dynamic Textarea ho an'ny Candidat
