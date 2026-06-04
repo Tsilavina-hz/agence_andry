@@ -141,14 +141,25 @@ header {
 }
 
 /* HERO SECTION */
+/* HERO SECTION VAOVAO SY MATIHANINA */
 .hero {
     position: relative;
-    /* Soloy sary trano na tany ny 'logooo.png' (ohatra: sary-trano.jpg) */
-    background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(26, 37, 60, 0.85)), url('sary-trano.jpg');
-    background-size: cover; /* Averina ho cover indray raha sary trano/tany lehibe */
-    background-position: center;
-    background-attachment: fixed;
-    /* ...ny ambiny tsy ovaina... */
+    /* Fampiarahana ilay sary vaovao sy ny overlay manga matroka mba ho hita tsara ny soratra eo aloha */
+    background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(26, 37, 60, 0.85)), url('sary-trano.png');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; /* Mijanona tsy mihetsika ny sary rehefa mampidina pejy (Parallax effect) */
+    background-repeat: no-repeat;
+    color: white;
+    text-align: center;
+    /* Nampitomboina ho 140px ny ambony mba tsy hifanery amin'ny navbar raikitra (Fixed Header) */
+    padding: 140px 20px 100px 20px;
+    min-height: calc(100vh - 78px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
 }
 
 .hero-logo-center {
