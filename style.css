@@ -143,13 +143,14 @@ header {
 /* HERO SECTION */
 .hero {
     position: relative;
-    background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(26, 37, 60, 0.85)), url('logooo.png');
-    background-size: cover;
-    background-position: center;
+    /* Nampiana background-repeat: no-repeat ary novaina ho 'contain' ilay size mba ho hita tsara ny logo */
+    background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(26, 37, 60, 0.85)), url('logooo.png') no-repeat center center;
+    background-size: contain; 
     background-attachment: fixed;
     color: white;
     text-align: center;
-    padding: 100px 20px;
+    /* Nampitomboina ho 140px ny padding-top mba hampidina kely an'ilay votoatiny tsy hifanery amin'ny navbar */
+    padding: 140px 20px 100px 20px;
     min-height: calc(100vh - 78px);
     display: flex;
     flex-direction: column;
