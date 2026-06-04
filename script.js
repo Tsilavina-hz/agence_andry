@@ -19,32 +19,90 @@ document.addEventListener('DOMContentLoaded', () => {
         candidatSelect.addEventListener('change', toggleCandidatTextarea);
     }
 
-    // 3. Fandefasana ny Formulaire Client
+    // =========================================================================
+    // 3. Fandefasana ny Formulaire Client any amin'ny WhatsApp
+    // =========================================================================
     const clientForm = document.getElementById('client-form');
     if (clientForm) {
         clientForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+            e.preventDefault(); // Misakana ny pejy tsy hanao refresh
             const statusBox = document.getElementById('client-status');
             
-            // Simulation fandefasana fahombiazana
+            // Maka ny angona rehetra avy amin'ny formulaire
+            const name = document.getElementById('client-name').value;
+            const phone1 = document.getElementById('client-phone1').value;
+            const phone2 = document.getElementById('client-phone2').value || "Tsy misy";
+            const address = document.getElementById('client-address').value;
+            const service = document.getElementById('client-service-select').value;
+            const details = document.getElementById('client-details').value || "Tsy misy";
+
+            // Mamorona ny lahatsoratra halefa voadahatra tsara
+            const text = `*FANGATAHANA MPAMPIASA (CLIENT)*\n\n` +
+                         `• *Anarana:* ${name}\n` +
+                         `• *Finday 1:* ${phone1}\n` +
+                         `• *WhatsApp:* ${phone2}\n` +
+                         `• *Adiresy:* ${address}\n` +
+                         `• *Serivisy ilaina:* ${service}\n` +
+                         `• *Antsipiriany:* ${details}`;
+
+            // Laharana WhatsApp handray ny hafatra (Soloy ny anao raha hanova ianao, miaraka amin'ny 261)
+            const whatsappNumber = "261345948045"; 
+            
+            // Asehoy ny hafatra fahombiazana eo amin'ny tranonkala
             statusBox.className = "form-status success";
-            statusBox.innerText = "Tontosa ny fangatahanao! Hifandray aminao tsy ho ela ny ekipanay.";
+            statusBox.innerText = "Tontosa ny fangatahanao! Rehefa misokatra ny WhatsApp dia tsindrio fotsiny ny 'Envoyer'.";
+            
+            // Sokafana ny rohy WhatsApp mandefa ny hafatra
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`, '_blank');
+            
+            // Averina amin'ny zero ny formulaire
             clientForm.reset();
             document.getElementById('client-extra-box').style.display = 'none';
             window.scrollTo({ top: statusBox.offsetTop - 100, behavior: 'smooth' });
         });
     }
 
-    // 4. Fandefasana ny Formulaire Mpiasa (Candidat)
+    // =========================================================================
+    // 4. Fandefasana ny Formulaire Mpiasa any amin'ny WhatsApp
+    // =========================================================================
     const candidatForm = document.getElementById('candidat-form');
     if (candidatForm) {
         candidatForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+            e.preventDefault(); // Misakana ny pejy tsy hanao refresh
             const statusBox = document.getElementById('candidat-status');
             
-            // Simulation fandefasana fahombiazana
+            // Maka ny angona rehetra avy amin'ny formulaire
+            const name = document.getElementById('candidat-name').value;
+            const cin = document.getElementById('candidat-cin').value;
+            const age = document.getElementById('candidat-age').value;
+            const phone = document.getElementById('candidat-phone').value;
+            const date = document.getElementById('candidat-date').value;
+            const address = document.getElementById('candidat-address').value;
+            const service = document.getElementById('candidat-service-select').value;
+            const details = document.getElementById('candidat-details').value || "Tsy misy";
+
+            // Mamorona ny lahatsoratra halefa voadahatra tsara
+            const text = `*FISORATANA ANARANA (MPIASA)*\n\n` +
+                         `• *Anarana:* ${name}\n` +
+                         `• *CIN:* ${cin}\n` +
+                         `• *Taona:* ${age} taona\n` +
+                         `• *Finday:* ${phone}\n` +
+                         `• *Daty afaka:* ${date}\n` +
+                         `• *Adiresy:* ${address}\n` +
+                         `• *Asa hainao:* ${service}\n` +
+                         `• *Traikefa:* ${details}`;
+
+            // Laharana WhatsApp handray ny hafatra
+            const whatsappNumber = "261345948045"; 
+            
+            // Asehoy ny hafatra fahombiazana eo amin'ny tranonkala
             statusBox.className = "form-status success";
-            statusBox.innerText = "Voaray ny fisoratana anaranao! Handinika ny mombamomba anao izahay.";
+            statusBox.innerText = "Voaray ny fisoratana anaranao! Rehefa misokatra ny WhatsApp dia tsindrio fotsiny ny 'Envoyer'.";
+            
+            // Sokafana ny rohy WhatsApp mandefa ny hafatra
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`, '_blank');
+            
+            // Averina amin'ny zero ny formulaire
             candidatForm.reset();
             document.getElementById('candidat-extra-box').style.display = 'none';
             window.scrollTo({ top: statusBox.offsetTop - 100, behavior: 'smooth' });
@@ -54,37 +112,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 5. Fiasa manova ny pejy jerena (Navigation SPA)
 function showPage(pageId) {
-    // Fenoy ny menu mobile rehefa misy kitihina ny rohy
     const menuBtn = document.getElementById('mobile-menu-btn');
     const navLinks = document.getElementById('nav-links');
     menuBtn.classList.remove('open');
     navLinks.classList.remove('open');
 
-    // Afeno ny pejy rehetra
     const sections = document.querySelectorAll('.page-section');
     sections.forEach(section => {
         section.classList.remove('active-page');
     });
 
-    // Asehoy ny appraised pejy
     const targetSection = document.getElementById(pageId);
     if (targetSection) {
         targetSection.classList.add('active-page');
     }
 
-    // Soloy ny nav link mavitrika (Active link)
     const navItems = document.querySelectorAll('.nav-item');
     navItems.forEach(item => {
         item.classList.remove('active');
     });
 
-    // Tadiavo hoe aiza ny rohy natsindry
     if (pageId === 'home-page') document.getElementById('link-home').classList.add('active');
     else if (pageId === 'serivisy-page') document.getElementById('link-serivisy').classList.add('active');
     else if (pageId === 'mpampiasa-page') document.getElementById('link-mpampiasa').classList.add('active');
     else if (pageId === 'mpiasa-page') document.getElementById('link-mpiasa').classList.add('active');
 
-    // Akatony ho any ambony ny fijery
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
