@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
                          `• *Serivisy ilaina:* ${service}\n` +
                          `• *Antsipiriany:* ${details}`;
 
-            // Laharana WhatsApp handray ny hafatra (Soloy ny anao raha hanova ianao, miaraka amin'ny 261)
+            // Laharana WhatsApp handray ny hafatra
             const whatsappNumber = "261345938044"; 
             
             // Asehoy ny hafatra fahombiazana eo amin'ny tranonkala
@@ -114,8 +114,11 @@ document.addEventListener('DOMContentLoaded', () => {
 function showPage(pageId) {
     const menuBtn = document.getElementById('mobile-menu-btn');
     const navLinks = document.getElementById('nav-links');
-    menuBtn.classList.remove('open');
-    navLinks.classList.remove('open');
+    
+    if (menuBtn && navLinks) {
+        menuBtn.classList.remove('open');
+        navLinks.classList.remove('open');
+    }
 
     const sections = document.querySelectorAll('.page-section');
     sections.forEach(section => {
@@ -132,10 +135,13 @@ function showPage(pageId) {
         item.classList.remove('active');
     });
 
-    if (pageId === 'home-page') document.getElementById('link-home').classList.add('active');
-    else if (pageId === 'serivisy-page') document.getElementById('link-serivisy').classList.add('active');
-    else if (pageId === 'mpampiasa-page') document.getElementById('link-mpampiasa').classList.add('active');
-    else if (pageId === 'mpiasa-page') document.getElementById('link-mpiasa').classList.add('active');
+    // Mampavitrika ny loko eo amin'ny lohatenin'ny menio mifanaraka amin'ny pejy
+    if (pageId === 'home-page' && document.getElementById('link-home')) document.getElementById('link-home').classList.add('active');
+    else if (pageId === 'serivisy-page' && document.getElementById('link-serivisy')) document.getElementById('link-serivisy').classList.add('active');
+    else if (pageId === 'galerie-page' && document.getElementById('link-galerie')) document.getElementById('link-galerie').classList.add('active');
+    else if (pageId === 'offres-page' && document.getElementById('link-offres')) document.getElementById('link-offres').classList.add('active');
+    else if (pageId === 'mpampiasa-page' && document.getElementById('link-mpampiasa')) document.getElementById('link-mpampiasa').classList.add('active');
+    else if (pageId === 'mpiasa-page' && document.getElementById('link-mpiasa')) document.getElementById('link-mpiasa').classList.add('active');
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -146,17 +152,19 @@ function toggleClientTextarea() {
     const extraBox = document.getElementById('client-extra-box');
     const label = document.getElementById('client-extra-label');
     
-    if (select.value === 'Autre' || select.value === 'Immobilier' || select.value === 'Design') {
-        extraBox.style.display = 'block';
-        if (select.value === 'Immobilier') {
-            label.innerText = "Hamarito ny karazan-trano/tany tadiavinao na amidy (Toerana, teti-bola...) *";
-        } else if (select.value === 'Design') {
-            label.innerText = "Inona ny karazana dokam-barotra na logo ilainao? *";
+    if (select && extraBox && label) {
+        if (select.value === 'Autre' || select.value === 'Immobilier' || select.value === 'Design') {
+            extraBox.style.display = 'block';
+            if (select.value === 'Immobilier') {
+                label.innerText = "Hamarito ny karazan-trano/tany tadiavinao na amidy (Toerana, teti-bola...) *";
+            } else if (select.value === 'Design') {
+                label.innerText = "Inona ny karazana dokam-barotra na logo ilainao? *";
+            } else {
+                label.innerText = "Soraty eto antsipiriany ny zavatra tadiaviao *";
+            }
         } else {
-            label.innerText = "Soraty eto antsipiriany ny zavatra tadiaviao *";
+            extraBox.style.display = 'none';
         }
-    } else {
-        extraBox.style.display = 'none';
     }
 }
 
@@ -165,9 +173,57 @@ function toggleCandidatTextarea() {
     const select = document.getElementById('candidat-service-select');
     const extraBox = document.getElementById('candidat-extra-box');
     
-    if (select.value === 'Autre' || select.value === 'Chauffeur' || select.value === 'Cuisine') {
-        extraBox.style.display = 'block';
-    } else {
-        extraBox.style.display = 'none';
+    if (select && extraBox) {
+        if (select.value === 'Autre' || select.value === 'Chauffeur' || select.value === 'Cuisine') {
+            extraBox.style.display = 'block';
+        } else {
+            extraBox.style.display = 'none';
+        }
     }
+}
+
+// =========================================================================
+// 8. Fitaovana Vaovao: Sivana ho an'ny Galerie (Filter Gallery)
+// =========================================================================
+function filterGallery(category) {
+    // Manova ny bokotra mavitrika (Active button class)
+    const buttons = document.querySelectorAll('.filter-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    
+    // Asiana 'active' ilay bokotra voatsindry
+    if (event && event.target) {
+        event.target.classList.add('active');
+    }
+
+    // Sivanina ny entana ao amin'ny galerie
+    const items = document.querySelectorAll('.gallery-item');
+    items.forEach(item => {
+        if (category === 'all') {
+            item.style.display = 'block';
+        } else if (item.classList.contains(category)) {
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
+
+// =========================================================================
+// 9. Fitaovana Vaovao: Fikarohana Asa Dinamika (Dynamic Job Search)
+// =========================================================================
+function searchJobs() {
+    const input = document.getElementById('job-search').value.toLowerCase();
+    const cards = document.querySelectorAll('.job-card');
+
+    cards.forEach(card => {
+        const title = card.querySelector('h4').innerText.toLowerCase();
+        const desc = card.querySelector('p').innerText.toLowerCase();
+        
+        // Raha mifandraika amin'ny teny nosoratana ny lohateny na ny fanazavana
+        if (title.includes(input) || desc.includes(input)) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
 }

@@ -6,7 +6,7 @@
     <title>Andry Fianarantsoa - Home & Service</title>
     <!-- FontAwesome ho an'ny Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Rohy mampifandray ny CSS -->
+    <!-- Rohy mampifandray the CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -30,14 +30,16 @@
         <ul class="nav-menu" id="nav-links">
             <li><a onclick="showPage('home-page')" id="link-home" class="nav-item active">Accueil</a></li>
             <li><a onclick="showPage('serivisy-page')" id="link-serivisy" class="nav-item">Ny Serivisy</a></li>
+            <li><a onclick="showPage('galerie-page')" id="link-galerie" class="nav-item">Galerie &amp; Trano/Tany</a></li>
+            <li><a onclick="showPage('offres-page')" id="link-offres" class="nav-item">Offres d'emploi</a></li>
             <li><a onclick="showPage('mpampiasa-page')" id="link-mpampiasa" class="nav-item">Hitady Mpanampy</a></li>
             <li><a onclick="showPage('mpiasa-page')" id="link-mpiasa" class="nav-item">Hitady Asa</a></li>
             <li class="loc-badge">Fianarantsoa</li>
         </ul>
     </header>
 
-    <!-- 1. ACCUEIL PAGE -->
     <main>
+        <!-- 1. ACCUEIL PAGE -->
         <div id="home-page" class="page-section active-page">
             <div class="hero">
                 <div class="hero-logo-center">
@@ -97,7 +99,7 @@
                     </div>
                     <div class="service-card">
                         <div class="service-icon"><i class="fa-solid fa-palette"></i></div>
-                        <h3>Communication & Design</h3>
+                        <h3>Communication &amp; Design</h3>
                         <p>Manandratra ny fandraharahanao izahay: Famoronana Logo, Afisy (Affiches), Karatra matihanina (Cartes de visite), ary dokam-barotra amin'ny Facebook.</p>
                     </div>
                 </div>
@@ -140,17 +142,124 @@
             </section>
         </div>
 
-        <!-- 3. MPAMPIASA PAGE (CLIENT) -->
+        <!-- 3. GALERIE PAGE (Trano, Tany, sy Réalisations Design) -->
+        <div id="galerie-page" class="page-section">
+            <div class="form-page-container">
+                <div class="section-box">
+                    <h3><i class="fa-solid fa-images"></i> Galerie des Services</h3>
+                    <p style="color: #64748b; margin-bottom: 20px;">Jereo eto ireo trano, tany, ary asa fanaovan-dokam-barotra efa vitantsika.</p>
+                    
+                    <!-- Bokotra sivana (Filter) -->
+                    <div class="filter-container">
+                        <button class="filter-btn active" onclick="filterGallery('all')">Rehetra</button>
+                        <button class="filter-btn" onclick="filterGallery('trano')">Trano Amidy</button>
+                        <button class="filter-btn" onclick="filterGallery('tany')">Tany Amidy</button>
+                        <button class="filter-btn" onclick="filterGallery('design')">Réalisations Design</button>
+                    </div>
+
+                    <div class="gallery-grid">
+                        <!-- Trano Amidy -->
+                        <div class="gallery-item trano">
+                            <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&amp;fit=crop&amp;w=500&amp;q=80" alt="Trano amidy">
+                            <div class="gallery-info">
+                                <h4>Villa F5 Moderne</h4>
+                                <p class="price">Ar 150,000,000</p>
+                                <p class="loc"><i class="fa-solid fa-location-dot"></i> Tsianolondroa, Fianarantsoa</p>
+                                <a href="https://wa.me/261345938044?text=Salama,%20liana%20amin'ilay%20Villa%20F5%20amidy%20aho." target="_blank" class="btn-sm-wa">
+                                    <i class="fab fa-whatsapp"></i> Hanontany (WhatsApp)
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Tany Amidy -->
+                        <div class="gallery-item tany">
+                            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&amp;fit=crop&amp;w=500&amp;q=80" alt="Tany amidy">
+                            <div class="gallery-info">
+                                <h4>Tany tsara toerana</h4>
+                                <p class="price">Ar 35,000,000</p>
+                                <p class="loc"><i class="fa-solid fa-location-dot"></i> Ankarinarivo, Fianarantsoa</p>
+                                <a href="https://wa.me/261345938044?text=Salama,%20liana%20amin'ilay%20tany%20amidy%20aho." target="_blank" class="btn-sm-wa">
+                                    <i class="fab fa-whatsapp"></i> Hanontany (WhatsApp)
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Réalisations Design -->
+                        <div class="gallery-item design">
+                            <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&amp;fit=crop&amp;w=500&amp;q=80" alt="Logo Design">
+                            <div class="gallery-info">
+                                <h4>Famoronana Logo Brand</h4>
+                                <p class="price">Andry Recruitment</p>
+                                <p class="loc"><i class="fa-solid fa-palette"></i> Communication &amp; Design</p>
+                                <a href="https://wa.me/261345938044?text=Salama,%20mila%20fanampiana%20amin'ny%20famoronana%20Logo%20aho." target="_blank" class="btn-sm-wa">
+                                    <i class="fab fa-whatsapp"></i> Hanafatra (WhatsApp)
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. OFFRES D'EMPLOI PAGE (Dynamique) -->
+        <div id="offres-page" class="page-section">
+            <div class="form-page-container">
+                <div class="section-box">
+                    <h3><i class="fa-solid fa-bullhorn"></i> Offres d'emploi Dinamika</h3>
+                    <p style="color: #64748b; margin-bottom: 20px;">Karohy eto mivantana ny asa mifanentana aminao ankehitriny.</p>
+                    
+                    <div class="search-container" style="margin-bottom: 25px; text-align: center;">
+                        <input type="text" id="job-search" onkeyup="searchJobs()" placeholder="💬 Karohy eto ny asa (Ohatra: Nounou, Gardien...)" style="width: 100%; max-width: 500px; padding: 12px 20px; border: 2px solid #e2e8f0; border-radius: 25px; outline: none; font-size: 15px;">
+                    </div>
+
+                    <div class="jobs-list" id="jobs-list-container" style="display: flex; flex-direction: column; gap: 15px;">
+                        <!-- Tolotra 1 -->
+                        <div class="job-card" style="background: white; border-left: 5px solid #059669; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); text-align: left;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                <h4 style="margin: 0; font-size: 18px; color: #1e293b;">Mpitaiza Kely (Nounou)</h4>
+                                <span style="background: #d1fae5; color: #065f46; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: bold;">Malalaka</span>
+                            </div>
+                            <p style="color: #475569; font-size: 14px; margin-bottom: 15px;">Mitady Nounou be fitiavana, madio, ary mahay mikarakara zaza 2 taona ao Tsianolondroa.</p>
+                            <div style="display: flex; gap: 20px; font-size: 13px; color: #64748b; margin-bottom: 15px;">
+                                <span><i class="fa-solid fa-money-bill-wave"></i> Karama: Ifanarahana</span>
+                                <span><i class="fa-solid fa-calendar-days"></i> Faritra: Fianarantsoa</span>
+                            </div>
+                            <a href="https://wa.me/261345938044?text=Salama,%20te%20hangataka%20amin'ilay%20asa%20Nounou%20aho." target="_blank" style="display: inline-block; background: #059669; color: white; padding: 8px 15px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: bold;">
+                                Hampiditra Taratasy (WhatsApp)
+                            </a>
+                        </div>
+
+                        <!-- Tolotra 2 -->
+                        <div class="job-card" style="background: white; border-left: 5px solid #059669; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); text-align: left;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                <h4 style="margin: 0; font-size: 18px; color: #1e293b;">Mpiambina (Gardien)</h4>
+                                <span style="background: #d1fae5; color: #065f46; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: bold;">Malalaka</span>
+                            </div>
+                            <p style="color: #475569; font-size: 14px; margin-bottom: 15px;">Mpiambina lehilahy, matanjaka, tsara fitondran-tena hiasa amin'ny alina ao Talatamaty.</p>
+                            <div style="display: flex; gap: 20px; font-size: 13px; color: #64748b; margin-bottom: 15px;">
+                                <span><i class="fa-solid fa-money-bill-wave"></i> Karama: Ar 150,000 / volana</span>
+                                <span><i class="fa-solid fa-calendar-days"></i> Faritra: Fianarantsoa</span>
+                            </div>
+                            <a href="https://wa.me/261345938044?text=Salama,%20te%20hangataka%20amin'ilay%20asa%20Gardien%20aho." target="_blank" style="display: inline-block; background: #059669; color: white; padding: 8px 15px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: bold;">
+                                Hampiditra Taratasy (WhatsApp)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. MPAMPIASA PAGE (CLIENT) -->
         <div id="mpampiasa-page" class="page-section">
             <div class="form-page-container">
                 <div class="section-box">
-                    <h3><i class="fa-solid fa-briefcase"></i> Taratasy Fifanarahana & Fangatahana (Client)</h3>
+                    <h3><i class="fa-solid fa-briefcase"></i> Taratasy Fifanarahana &amp; Fangatahana (Client)</h3>
                     <ul>
                         <li><strong>Saran'ny Serivisy (Frais d'agence 100%):</strong> Aloa mivantana amin'ny andro voalohany hanombohan'ny mpanampy miasa.</li>
                         <li><strong>Antoka sy Fanoloana:</strong> Raha misy fialana latsaky ny 1 volana (olana avy amin'ny mpiasa), manolo maimaim-poana ny Agence ao anatin'ny herinandro. Raha tsy mahita izahay dia haverina ny <em>commission</em>. Raha dila ny 1 volana kosa dia misy sarany vaovao.</li>
                         <li><strong>Tapa-bolana hianarana:</strong> Manana 2 herinandro hampianarana the mpiasa ny mpampiasa. Raha tena tsy hainy vao miroso amin'ny fanoloana.</li>
                         <li><strong>Fanadihadiana Lalina:</strong> Ny Agence dia mitaky taratasy feno (CIN, Résidence, Saritapaka).</li>
-                        <li><strong>Fiarovana sy Halatra:</strong> Ny mpampiasa no mitantana ny fananany sy mametraka fitoriana raha misy halatra, fa ny Agence kosa dia hanome ny atontan-taratasy rehetra momba ilay mpiasa.</li>
+                        <li><strong>Fiarovana sy Halatra:</strong> Ny mpampiasa no mitantana ny fananany sy mametraka fitoriana raha misy halatra, fa ny Agence kosa dia hanome the atontan-taratasy rehetra momba ilay mpiasa.</li>
                         <li class="nb-note">NB: Izahay dia tsy mahalala ny tena toetra ny olona alefanay miasa, fa kosa manao fanadihadiana ny momba azy rehetra alohan'ny handefasana azy miasa.</li>
                     </ul>
 
@@ -158,7 +267,7 @@
                     
                     <form id="client-form">
                         <div class="form-group">
-                            <label for="client-name">Anarana sy Fanampiny (Nom & Prénom) *</label>
+                            <label for="client-name">Anarana sy Fanampiny (Nom &amp; Prénom) *</label>
                             <input type="text" id="client-name" placeholder="Ohatra: M. Jean Luc" required>
                         </div>
                         
@@ -186,7 +295,7 @@
                                 <option value="Gardien">Gardien (Mpiambina)</option>
                                 <option value="Serveur">Serveur / Serveuse</option>
                                 <option value="Immobilier">Andry Real Estate (Trano/Tany)</option>
-                                <option value="Design">Communication & Design</option>
+                                <option value="Design">Communication &amp; Design</option>
                                 <option value="Autre">Autre... (Hafa tsy voatanisa)</option>
                             </select>
                         </div>
@@ -209,11 +318,11 @@
             </div>
         </div>
 
-        <!-- 4. MPIASA PAGE (CANDIDAT) -->
+        <!-- 6. MPIASA PAGE (CANDIDAT) -->
         <div id="mpiasa-page" class="page-section">
             <div class="form-page-container">
                 <div class="section-box candidat-box">
-                    <h3><i class="fa-solid fa-user-pen"></i>amp; Fifanarahana Arak'asa & Fisoratana Anarana (Mpiasa)</h3>
+                    <h3><i class="fa-solid fa-user-pen"></i>amp; Fifanarahana Arak'asa &amp; Fisoratana Anarana (Mpiasa)</h3>
                     <ul>
                         <li><strong>Fe-potoana hiasana:</strong> 6 volana ho an'ny eto Fianarantsoa, ary 1 taona kosa raha any amin'ny faritra.</li>
                         <li><strong>Antoka fitondran-tena:</strong> Tsy raisina aloha ny antsasaky ny karama amin'ny volana voalohany fa averina mitambatra amin'ny fahataperan'ny fifanarahana hiasana.</li>
@@ -226,7 +335,7 @@
                     
                     <form id="candidat-form">
                         <div class="form-group">
-                            <label for="candidat-name">Anarana sy Fanampiny (Nom & Prénom) *</label>
+                            <label for="candidat-name">Anarana sy Fanampiny (Nom &amp; Prénom) *</label>
                             <input type="text" id="candidat-name" placeholder="Ohatra: Rasoa Marie" required>
                         </div>
 
@@ -293,9 +402,14 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
+    <!-- Facebook Messenger Floating Button -->
+    <a href="https://m.me/AndryTOLOTRASAFianarantsoa" class="messenger-float" target="_blank" rel="noopener noreferrer" style="position: fixed; bottom: 90px; right: 20px; background-color: #0084ff; color: #fff; border-radius: 50px; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 2px 2px 3px #999; z-index: 100; text-decoration: none; transition: 0.3s;">
+        <i class="fa-brands fa-facebook-messenger"></i>
+    </a>
+
     <footer>
-        <h3>ANDRY FIANARANTSOA HOME & SERVICE</h3>
-        <p>🏠 Immobilier | 🤝 Placement & Service | 📢 Communication</p>
+        <h3>ANDRY FIANARANTSOA HOME &amp; SERVICE</h3>
+        <p>🏠 Immobilier | 🤝 Placement &amp; Service | 📢 Communication</p>
         <p>📞 034 59 380 44</p>
         <p>📧 andridigitale@gmail.com</p>
         <p>📍 Fianarantsoa</p>
