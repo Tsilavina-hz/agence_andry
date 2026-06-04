@@ -142,19 +142,19 @@ header {
 
 /* HERO SECTION */
 /* HERO SECTION VAOVAO SY MATIHANINA */
+/* 1. HITSINHY NY BACKGROUND HERO */
 .hero {
     position: relative;
-    /* Fampiarahana ilay sary vaovao sy ny overlay manga matroka mba ho hita tsara ny soratra eo aloha */
-    background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(26, 37, 60, 0.85)), url('sary-trano.png');
+    /* Jereo tsara fa 'sary-trano_2.png' no soratana eto mifanaraka amin'ny anaran'ny rakitrao */
+    background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(26, 37, 60, 0.85)), url('sary-trano_2.png');
     background-size: cover;
-    background-position: center center;
-    background-attachment: fixed; /* Mijanona tsy mihetsika ny sary rehefa mampidina pejy (Parallax effect) */
+    background-position: center top; /* Natao 'top' mba hiantomboka amin'ny tafo sy ny rihana ambony ny fahitana azy */
     background-repeat: no-repeat;
+    /* Nesorina ilay 'fixed' fa io no manao zoom be loatra manimba azy amin'ny solosaina sasany */
     color: white;
     text-align: center;
-    /* Nampitomboina ho 140px ny ambony mba tsy hifanery amin'ny navbar raikitra (Fixed Header) */
-    padding: 140px 20px 100px 20px;
-    min-height: calc(100vh - 78px);
+    padding: 150px 20px 100px 20px; /* Nampiana elanelana tsara eo ambony */
+    min-height: 85vh; /* Natao mazava tsara ny haavon'ny sakana */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -162,6 +162,7 @@ header {
     z-index: 1;
 }
 
+/* 2. MAKA ANTOKA FA HO EO AFbackgroundOVOANY FOANA ILAY LOGO BORIBORY */
 .hero-logo-center {
     width: 130px;
     height: 130px;
@@ -173,7 +174,7 @@ header {
     justify-content: center;
     box-shadow: 0 10px 25px rgba(0,0,0,0.4);
     border: 4px solid #d4af37;
-    margin-bottom: 25px;
+    margin: 0 auto 25px auto; /* Nampiana '0 auto' mba hitoetra eo afovoany tsara foana */
     animation: pulse 2s infinite;
 }
 
