@@ -573,53 +573,6 @@
             .hero-buttons { flex-direction: column; width: 100%; max-width: 300px; }
             .hero-btn { width: 100%; justify-content: center; }
         }
-
-
-
-
-        .contact-rapide{
-padding:60px 20px;
-text-align:center;
-background:white;
-}
-
-.stats{
-display:flex;
-justify-content:center;
-gap:30px;
-padding:60px 20px;
-background:#1a253c;
-color:white;
-flex-wrap:wrap;
-}
-
-.stat-box{
-text-align:center;
-}
-
-.stat-box h2{
-font-size:40px;
-color:#d4af37;
-margin-bottom:10px;
-}
-
-.whatsapp-float{
-position:fixed;
-bottom:20px;
-right:20px;
-width:60px;
-height:60px;
-background:#25D366;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:30px;
-color:white;
-text-decoration:none;
-z-index:9999;
-box-shadow:0 5px 15px rgba(0,0,0,.3);
-}
     </style>
 </head>
 <body>
@@ -668,37 +621,7 @@ box-shadow:0 5px 15px rgba(0,0,0,.3);
             </div>
         </div>
     </div>
-<section class="contact-rapide">
-    <h2>Mifandraisa Aminay</h2>
 
-    <div class="services-container">
-
-        <div class="service-card">
-            <div class="service-icon">
-                <i class="fas fa-phone"></i>
-            </div>
-            <h3>Antsoy izahay</h3>
-            <p>034 59 480 45</p>
-        </div>
-
-        <div class="service-card">
-            <div class="service-icon">
-                <i class="fas fa-envelope"></i>
-            </div>
-            <h3>Email</h3>
-            <p>andrydigitale@gmail.com</p>
-        </div>
-
-        <div class="service-card">
-            <div class="service-icon">
-                <i class="fas fa-location-dot"></i>
-            </div>
-            <h3>Toerana</h3>
-            <p>Fianarantsoa, Madagascar</p>
-        </div>
-
-    </div>
-</section>
     <!-- 2. SERVICES PAGE -->
     <section id="serivisy-page" class="page-section">
         <div class="services-section">
@@ -726,59 +649,6 @@ box-shadow:0 5px 15px rgba(0,0,0,.3);
             </div>
         </div>
     </section>
-    <section class="stats">
-
-    <div class="stat-box">
-        <h2>200+</h2>
-        <p>Mpiasa Nahazo Asa</p>
-    </div>
-
-    <div class="stat-box">
-        <h2>100+</h2>
-        <p>Mpanjifa Afa-po</p>
-    </div>
-
-    <div class="stat-box">
-        <h2>50+</h2>
-        <p>Trano sy Tany</p>
-    </div>
-
-</section>
-
-
-
-<section class="services-section">
-
-<h2>Nahoana no Misafidy Anay ?</h2>
-
-<div class="services-container">
-
-<div class="service-card">
-<div class="service-icon">
-<i class="fas fa-shield-alt"></i>
-</div>
-<h3>Azo Itokisana</h3>
-<p>Mpiasa nandalo fanadihadiana.</p>
-</div>
-
-<div class="service-card">
-<div class="service-icon">
-<i class="fas fa-bolt"></i>
-</div>
-<h3>Haingana</h3>
-<p>Valiny sy serivisy haingana.</p>
-</div>
-
-<div class="service-card">
-<div class="service-icon">
-<i class="fas fa-star"></i>
-</div>
-<h3>Matihanina</h3>
-<p>Fomba fiasa manara-penitra.</p>
-</div>
-
-</div>
-</section>
 
     <!-- 3. MPAMPIASA PAGE (CLIENT) -->
     <section id="mpampiasa-page" class="page-section">
@@ -929,31 +799,9 @@ box-shadow:0 5px 15px rgba(0,0,0,.3);
         </div>
     </section>
 
-<footer>
-
-<h3>ANDRY FIANARANTSOA HOME & SERVICE</h3>
-
-<p>
-🏠 Immobilier | 🤝 Placement & Service | 📢 Communication
-</p>
-
-<p>
-📞 034 59 480 45
-</p>
-
-<p>
-📧 andrydigitale@gmail.com
-</p>
-
-<p>
-📍 Fianarantsoa
-</p>
-
-<p>
-© 2026 Tous droits réservés
-</p>
-
-</footer>
+    <footer>
+        <p>&copy; 2026 Andry Fianarantsoa - Home & Service. Zo rehetra voatokana.</p>
+    </footer>
 
     <!-- LOGIQUE JAVASCRIPT MADIO ARY TONTOSA -->
     <script>
@@ -1029,35 +877,16 @@ box-shadow:0 5px 15px rgba(0,0,0,.3);
         }
 
         // Fitantanana ny fandefasana Formulaires (Submits)
-document.getElementById('client-form').addEventListener('submit', function(e){
+        document.getElementById('client-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const status = document.getElementById('client-status');
+            status.className = "form-status success";
+            status.innerText = "Tontosa ny fandefasana ny fangatahanao!";
+            this.reset();
+            toggleClientTextarea();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
 
-e.preventDefault();
-
-let nom =
-document.getElementById('client-name').value;
-
-let tel =
-document.getElementById('client-phone1').value;
-
-let service =
-document.getElementById('client-service-select').value;
-
-let message =
-`FANGATAHANA VAOVAO
-
-Anarana : ${nom}
-
-Téléphone : ${tel}
-
-Service : ${service}`;
-
-window.open(
-'https://wa.me/261345948045?text=' +
-encodeURIComponent(message),
-'_blank'
-);
-
-});
         document.getElementById('candidat-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const status = document.getElementById('candidat-status');
@@ -1068,14 +897,5 @@ encodeURIComponent(message),
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     </script>
-
-
-<a href="https://wa.me/261345948045"
-target="_blank"
-class="whatsapp-float">
-
-<i class="fab fa-whatsapp"></i>
-
-</a>
 </body>
 </html>
