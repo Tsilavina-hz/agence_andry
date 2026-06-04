@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
                          `• *Antsipiriany:* ${details}`;
 
             // Laharana WhatsApp handray ny hafatra (Soloy ny anao raha hanova ianao, miaraka amin'ny 261)
-            const whatsappNumber = "261345948045"; 
+            const whatsappNumber = "261345938044"; 
             
             // Asehoy ny hafatra fahombiazana eo amin'ny tranonkala
             statusBox.className = "form-status success";
