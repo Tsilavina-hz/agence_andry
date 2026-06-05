@@ -145,16 +145,15 @@ header {
 /* 1. HITSINHY NY BACKGROUND HERO */
 .hero {
     position: relative;
-    /* Jereo tsara fa 'sary-trano_2.png' no soratana eto mifanaraka amin'ny anaran'ny rakitrao */
-    background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(26, 37, 60, 0.85)), url('sary-trano_2.png');
+    /* Natao saraka tsara ny gradient sy ny sary mba ho mora hita izay olana */
+    background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(26, 37, 60, 0.85)), url('sary-trano.png');
     background-size: cover;
-    background-position: center top; /* Natao 'top' mba hiantomboka amin'ny tafo sy ny rihana ambony ny fahitana azy */
+    background-position: center top;
     background-repeat: no-repeat;
-    /* Nesorina ilay 'fixed' fa io no manao zoom be loatra manimba azy amin'ny solosaina sasany */
     color: white;
     text-align: center;
-    padding: 150px 20px 100px 20px; /* Nampiana elanelana tsara eo ambony */
-    min-height: 85vh; /* Natao mazava tsara ny haavon'ny sakana */
+    padding: 150px 20px 100px 20px;
+    min-height: 85vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
